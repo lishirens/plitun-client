@@ -65,19 +65,19 @@ win32 {
     # https://doc.qt.io/qt-6/qmake-variable-reference.html#version
     #RC_FILE = resource.rc
     RC_ICONS = resource\windows\plinfo.ico
-    QMAKE_TARGET_PRODUCT = "Pli Info VPN"
+    QMAKE_TARGET_PRODUCT = "plinfo Secure Client"
     QMAKE_TARGET_COMPANY = "https://plinfo.pro"
-    QMAKE_TARGET_DESCRIPTION = "Pli Info VPN"
+    QMAKE_TARGET_DESCRIPTION = "plinfo Secure Client"
     QMAKE_TARGET_COPYRIGHT = "Copyright 2022-2023 https://plinfo.pro. All rights reserved."
 
     DESTDIR = $$PWD/out/bin
-    copyIcon(assets/pli-info.png resource/windows/plinfo.ico)
+    copyIcon(assets/plinfo64.png resource/windows/plinfo.ico)
 }
 
 linux:!android {
     DESTDIR = $$PWD/out/opt/plinfo/bin
-    copyToDestDir(assets/pli-info.png resource/linux/plinfo.desktop)
-    copyIcon(assets/pli-info.png)
+    copyToDestDir(assets/plinfo.png resource/linux/plinfo.desktop)
+    copyIcon(assets/plinfo64.png)
 }
 
 # You can make your code fail to compile if it uses deprecated APIs.

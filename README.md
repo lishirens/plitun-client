@@ -1,6 +1,6 @@
 > 动态拆分隧道使用[说明](./DynamicSplitTunneling.md)
 
-## Pli Info VPN
+## plinfo Secure Client
 
 This is an SSL VPN client that supports OpenConnect or Cisco's AnyConnect [SSL VPN Protocol](https://datatracker.ietf.org/doc/html/draft-mavrogiannopoulos-openconnect-03).  It use [sslcon](https://github.com/tlslink/sslcon) as the core to communicate with the server.
 
@@ -59,3 +59,8 @@ Double-click the `.run` file to install the software. The `.run` package is supp
 
 Enter the installation directory and execute the uninstall program.
 
+## Help
+
+| You may want to join in the QQ Group(66899589) to get some help. |
+| :----------------------------------------------------------: |
+| <img src="./assets/donate.JPG" width="150px" height="150px" />      ![](./images/qqgroup.png) |

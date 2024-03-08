@@ -3,6 +3,7 @@
         <file>assets/connected.png</file>
         <file>assets/connecting.png</file>
         <file>assets/notconnected.png</file>
-        <file>assets/pli-info.png</file>
+        <file>assets/plinfo64.png</file>
+        <file>assets/donate.JPG</file>
     </qresource>
 </RCC>

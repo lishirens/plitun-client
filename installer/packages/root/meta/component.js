@@ -69,13 +69,13 @@ Component.prototype.createOperations = function()
         //开始菜单快捷方式
         component.addOperation("CreateShortcut",
                                "@TargetDir@/plinfo.exe",
-                               "@StartMenuDir@/Pli Info VPN.lnk",
+                               "@StartMenuDir@/plinfo Secure Client.lnk",
                                "workingDirectory=@TargetDir@");
 
         //桌面快捷方式
         component.addOperation("CreateShortcut",
                                "@TargetDir@/plinfo.exe",
-                               "@DesktopDir@/Pli Info VPN.lnk",
+                               "@DesktopDir@/plinfo Secure Client.lnk",
                                "workingDirectory=@TargetDir@");
 
 

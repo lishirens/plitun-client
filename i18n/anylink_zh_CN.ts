@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-    <TS version="2.1" language = "zh_CN" >
-        <context>
-        <name>Pli-info</name>
+<TS version="2.1" language="zh_CN">
+<context>
+    <name>plinfo</name>
     <message>
         <location filename="../src/plinfo.cpp" line="+29"/>
-        <source>Pli info VPN</source>
-        <translation>企业安全VPN</translation>
+        <source>plinfo Secure Client</source>
+        <translation>plinfo 安全客户端</translation>
     </message>
     <message>
         <location filename="../src/plinfo.ui" line="+58"/>
@@ -151,13 +151,13 @@
     </message>
     <message>
         <location line="+126"/>
-        <source>&lt;a href=&quot;https://plitun.com/issues&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;Getting Help&lt;/span&gt;&lt;/a&gt;</source>
-        <translation>&lt;a href=&quot;https://plitun.com/issues&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;获取帮助&lt;/span&gt;&lt;/a&gt;</translation>
+        <source>&lt;a href=&quot;https://github.com/tlslink/plinfo-client/issues&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;Getting Help&lt;/span&gt;&lt;/a&gt;</source>
+        <translation>&lt;a href=&quot;https://github.com/tlslink/plinfo-client/issues&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;获取帮助&lt;/span&gt;&lt;/a&gt;</translation>
     </message>
     <message>
         <location line="+41"/>
         <source>&lt;a href=&quot;https://github.com/tlslink/plinfo-client/releases&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;Check Updates&lt;/span&gt;&lt;/a&gt;</source>
-        <translation>&lt;a href=&quot;https://plitun.com&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;检查更新&lt;/span&gt;&lt;/a&gt;</translation>
+        <translation>&lt;a href=&quot;https://plinfo.pro&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;检查更新&lt;/span&gt;&lt;/a&gt;</translation>
     </message>
     <message>
         <location filename="../src/plinfo.cpp" line="+200"/>
@@ -353,7 +353,7 @@
     <message>
         <location line="+58"/>
         <source>This software can save passwords in the Keychain of the operating system to avoid plaintext passwords, but you should evaluate whether your usage scenarios allow saving passwords and avoid potential security risks.</source>
-        <translation>本软件具有可选的密码保存功能，其中密码将保存在操作系统的密钥串里。用户需评估自己的使用环境是否允许保存密码以及设备丢失可能带来的潜在风险。请务必前往本软件官网 &lt;a href=&quot;https://plitun.com&quot;&gt;https://plitun.com&lt;/a&gt; 下载和使用最新版本！</translation>
+        <translation>本软件具有可选的密码保存功能，其中密码将保存在操作系统的密钥串里。用户需评估自己的使用环境是否允许保存密码以及设备丢失可能带来的潜在风险。请务必前往本软件官网 &lt;a href=&quot;https://plinfo.pro&quot;&gt;https://plinfo.pro&lt;/a&gt; 下载和使用最新版本！</translation>
     </message>
 </context>
 <context>
@@ -740,7 +740,7 @@
     <message>
         <location filename="../src/main.cpp" line="+16"/>
         <source>The current version of the software has expired, please install the latest version!</source>
-        <translation>软件当前版本已过期，请前往本软件官网 &lt;a href=&quot;https://plitun.com&quot;&gt;https://plitun.com&lt;/a&gt; 下载和使用最新版本！</translation>
+        <translation>软件当前版本已过期，请前往本软件官网 &lt;a href=&quot;https://plinfo.pro&quot;&gt;https://plinfo.pro&lt;/a&gt; 下载和使用最新版本！</translation>
     </message>
 </context>
 <context>

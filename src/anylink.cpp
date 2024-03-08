@@ -26,11 +26,11 @@ plinfo::plinfo(QWidget *parent)
     setWindowFlags(Qt::CustomizeWindowHint | Qt::WindowTitleHint | Qt::WindowMinimizeButtonHint
                    | Qt::WindowCloseButtonHint | Qt::WindowStaysOnTopHint);
 #endif
-    setWindowTitle(tr("Pli Info VPN") + " v" + appVersion);
+    setWindowTitle(tr("plinfo Secure Client") + " v" + appVersion);
 
 #if defined(Q_OS_LINUX) || defined(Q_OS_WIN)
     loadStyleSheet(":/resource/style.qss");
-    setWindowIcon(QIcon(":/images/pli-info.png"));
+    setWindowIcon(QIcon(":/images/plinfo64.png"));
 #endif
     // qDebug() << screen()->devicePixelRatio() << geometry().width() << geometry().height() << QSysInfo::kernelType();
     // 需要联合使用 QSysInfo::kernelType() 和  QSysInfo::productType()

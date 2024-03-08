@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Installer>
-    <Name>PLi VPN</Name>
+    <Name>plinfo Secure Client</Name>
     <Version>0.9.5</Version>
-    <Title>企业安全VPN</Title>
-    <Publisher>https://plitun.com</Publisher>
-    <ProductUrl>https://plitun.com</ProductUrl>
+    <Title>plinfo Secure Client</Title>
+    <Publisher>https://plinfo.pro</Publisher>
+    <ProductUrl>https://plinfo.pro</ProductUrl>
     <InstallerWindowIcon>plinfo64.png</InstallerWindowIcon>
-    <InstallerApplicationIcon>pli-info</InstallerApplicationIcon>
-    <StartMenuDir>PLi VPN</StartMenuDir>
+    <InstallerApplicationIcon>plinfo</InstallerApplicationIcon>
+    <StartMenuDir>plinfo Secure Client</StartMenuDir>
     <TargetDir>@ApplicationsDir@/</TargetDir>
     <RemoveTargetDir>true</RemoveTargetDir>
     <WizardShowPageList>false</WizardShowPageList>
