@@ -30,7 +30,7 @@ AnyLink::AnyLink(QWidget *parent)
 
 #if defined(Q_OS_LINUX) || defined(Q_OS_WIN)
     loadStyleSheet(":/resource/style.qss");
-    setWindowIcon(QIcon(":/images/anylink64.png"));
+    setWindowIcon(QIcon(":/images/pli-info.png"));
 #endif
     // qDebug() << screen()->devicePixelRatio() << geometry().width() << geometry().height() << QSysInfo::kernelType();
     // 需要联合使用 QSysInfo::kernelType() 和  QSysInfo::productType()
