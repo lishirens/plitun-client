@@ -22,7 +22,7 @@ int main(int argc, char *argv[])
     qSetMessagePattern("%{type}:[%{file}:%{line}]  %{message}");
     //    qDebug() << QStyleFactory::keys();
     //    QApplication::setStyle("fusion");
-    QApplication::setApplicationName("AnyLink");
+    QApplication::setApplicationName("Plinfo");
     configLocation = QStandardPaths::writableLocation(QStandardPaths::AppConfigLocation);
 //    qDebug() << configLocation;
     tempLocation = QStandardPaths::writableLocation(QStandardPaths::TempLocation);
@@ -50,11 +50,11 @@ int main(int argc, char *argv[])
 
 //    outdateCheck();
 
-    AnyLink w;
+    Plinfo w;
     w.show();
 
     QApplication::setQuitOnLastWindowClosed(false);
-    QObject::connect(&app, &SingleApplication::instanceStarted, &w, &AnyLink::showNormal);
+    QObject::connect(&app, &SingleApplication::instanceStarted, &w, &Plinfo::showNormal);
 
     return app.exec();
 }

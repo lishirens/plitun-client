@@ -8,7 +8,7 @@
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
-class AnyLink;
+class Plinfo;
 }
 QT_END_NAMESPACE
 
@@ -19,15 +19,15 @@ class QSystemTrayIcon;
 class QMenu;
 class QComboBox;
 
-class AnyLink : public QWidget
+class Plinfo : public QWidget
 {
     Q_OBJECT
 
 public:
     enum { STATUS, CONFIG, CONNECT, DISCONNECT, RECONNECT, INTERFACE, ABORT, STAT };
 
-    AnyLink(QWidget *parent = nullptr);
-    ~AnyLink();
+    Plinfo(QWidget *parent = nullptr);
+    ~Plinfo();
 
     JsonRpcWebSocketClient *rpc = nullptr;
 
@@ -43,7 +43,7 @@ protected:
     void showEvent(QShowEvent *event) override;
 
 private:
-    Ui::AnyLink *ui;
+    Ui::Plinfo *ui;
     QSystemTrayIcon *trayIcon = nullptr;
     QMenu *trayIconMenu;
     QComboBox *iconComboBox;

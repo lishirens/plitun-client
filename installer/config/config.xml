@@ -3,8 +3,8 @@
     <Name>Plinfo Secure Client</Name>
     <Version>0.9.5</Version>
     <Title>Plinfo Secure Client</Title>
-    <Publisher>https://anylink.pro</Publisher>
-    <ProductUrl>https://anylink.pro</ProductUrl>
+    <Publisher>https://plitun.com</Publisher>
+    <ProductUrl>https://plitun.com</ProductUrl>
     <InstallerWindowIcon>plinfo.png</InstallerWindowIcon>
     <InstallerApplicationIcon>anylink</InstallerApplicationIcon>
     <StartMenuDir>Plinfo Secure Client</StartMenuDir>

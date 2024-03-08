@@ -52,26 +52,26 @@ macx {
     HEADERS += src/macdockiconhandler.h
     SOURCES += src/macdockiconhandler.mm
 
-    TARGET = AnyLink
+    TARGET = Plinfo
     # QMAKE_APPLE_DEVICE_ARCHS = x86_64
-    ICON = resource/mac/anylink.icns
+    ICON = resource/mac/plinfo.icns
     QMAKE_INFO_PLIST = resource/mac/Info.plist
     DESTDIR = $$PWD/out/bin
 
-    copyIcon(resource/mac/anylink.icns)
+    copyIcon(resource/mac/plinfo.icns)
 }
 
 win32 {
     # https://doc.qt.io/qt-6/qmake-variable-reference.html#version
     #RC_FILE = resource.rc
-    RC_ICONS = resource\windows\anylink.ico
+    RC_ICONS = resource\windows\plinfo.ico
     QMAKE_TARGET_PRODUCT = "Plinfo Secure Client"
-    QMAKE_TARGET_COMPANY = "https://anylink.pro"
+    QMAKE_TARGET_COMPANY = "https://plitun.com"
     QMAKE_TARGET_DESCRIPTION = "Plinfo Secure Client"
-    QMAKE_TARGET_COPYRIGHT = "Copyright 2022-2023 https://anylink.pro. All rights reserved."
+    QMAKE_TARGET_COPYRIGHT = "Copyright 2022-2023 https://plitun.com. All rights reserved."
 
     DESTDIR = $$PWD/out/bin
-    copyIcon(assets/plinfo.png resource/windows/anylink.ico)
+    copyIcon(assets/plinfo.png resource/windows/plinfo.ico)
 }
 
 linux:!android {

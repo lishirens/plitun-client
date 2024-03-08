@@ -34,7 +34,7 @@ Controller.prototype.onInstallationFinished = function ()
         } else if (systemInfo.kernelType === "winnt") {
             installer.executeDetached("@TargetDir@/anylink.exe");
         } else if (systemInfo.kernelType === "darwin") {
-            installer.executeDetached("@TargetDir@/AnyLink.app/Contents/MacOS/AnyLink");
+            installer.executeDetached("@TargetDir@/Plinfo.app/Contents/MacOS/Plinfo");
         }
 
        // if (installer.value("UILanguage") === "zh_CN") {
@@ -48,7 +48,7 @@ Controller.prototype.onInstallationFinished = function ()
 //{
 //    try {
 //        if (installer.isUninstaller()) {
-//            QDesktopServices.openUrl("https://anylink.pro");
+//            QDesktopServices.openUrl("https://plitun.com");
 //        }
 //    } catch(e) {
 //        console.log(e);

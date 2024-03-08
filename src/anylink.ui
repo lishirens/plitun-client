@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>AnyLink</class>
- <widget class="QWidget" name="AnyLink">
+ <class>Plinfo</class>
+ <widget class="QWidget" name="Plinfo">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -688,7 +688,7 @@
            <item>
             <widget class="QLabel" name="label_16">
              <property name="text">
-              <string notr="true">&amp;copy; 2023 &lt;a href=&quot;https://anylink.pro&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;https://anylink.pro&lt;/span&gt;&lt;/a&gt;</string>
+              <string notr="true">&amp;copy; 2023 &lt;a href=&quot;https://plitun.com&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;https://plitun.com&lt;/span&gt;&lt;/a&gt;</string>
              </property>
              <property name="openExternalLinks">
               <bool>true</bool>

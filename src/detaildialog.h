@@ -9,13 +9,13 @@ namespace Ui {
 class DetailDialog;
 }
 
-class AnyLink;
+class Plinfo;
 class DetailDialog : public QDialog
 {
     Q_OBJECT
 
 public:
-    explicit DetailDialog(AnyLink *parent);
+    explicit DetailDialog(Plinfo *parent);
     ~DetailDialog();
 
     void setRoutes(const QJsonArray &excludes, const QJsonArray &includes);
@@ -23,7 +23,7 @@ public:
 private:
     Ui::DetailDialog *ui;
     QTimer timer;
-    AnyLink *anylink;
+    Plinfo *anylink;
 
     QString format(double bytes);  // typedef quint64 qulonglong;
     // QWidget interface

@@ -15,11 +15,11 @@ function Component()
         uninstaller = installer.value("TargetDir") + "/" + uninstaller;
 
     } else if (systemInfo.kernelType === "winnt") {
-        installer.setValue("TargetDir", targetDir + "AnyLink");
+        installer.setValue("TargetDir", targetDir + "Plinfo");
 
         uninstaller = installer.value("TargetDir") + "/" + uninstaller + ".exe";
     } else if (systemInfo.kernelType === "darwin") {
-        installer.setValue("TargetDir", targetDir + "AnyLink");
+        installer.setValue("TargetDir", targetDir + "Plinfo");
 
         uninstaller = installer.value("TargetDir") + "/" + uninstaller + ".app/Contents/MacOS/uninstall";
     }
@@ -36,7 +36,7 @@ function Component()
     }
 
     if (systemInfo.kernelType === "darwin") {
-        component.addStopProcessForUpdateRequest("AnyLink");
+        component.addStopProcessForUpdateRequest("Plinfo");
     } else {
         // kill self when install and uninstall
         component.addStopProcessForUpdateRequest("anylink");
@@ -83,12 +83,12 @@ Component.prototype.createOperations = function()
                                 "UNDOEXECUTE","@TargetDir@/vpnagent.exe","uninstall");
     } else if (systemInfo.kernelType === "darwin") {
         component.createOperations();
-        component.addOperation("CreateLink", "@ApplicationsDir@/AnyLink.app", "@TargetDir@/AnyLink.app");
+        component.addOperation("CreateLink", "@ApplicationsDir@/Plinfo.app", "@TargetDir@/Plinfo.app");
 
         if (installer.gainAdminRights()) {
             // install and start the service or stop and remove the service
-            component.addElevatedOperation("Execute", "@TargetDir@/AnyLink.app/Contents/MacOS/vpnagent","install",
-                                    "UNDOEXECUTE","@TargetDir@/AnyLink.app/Contents/MacOS/vpnagent","uninstall");
+            component.addElevatedOperation("Execute", "@TargetDir@/Plinfo.app/Contents/MacOS/vpnagent","install",
+                                    "UNDOEXECUTE","@TargetDir@/Plinfo.app/Contents/MacOS/vpnagent","uninstall");
             installer.dropAdminRights()
         }
     }
