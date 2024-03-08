@@ -768,9 +768,6 @@
            <property name="text">
             <string/>
            </property>
-           <property name="pixmap">
-            <pixmap resource="../systray.qrc">:/assets/donate.JPG</pixmap>
-           </property>
            <property name="scaledContents">
             <bool>true</bool>
            </property>
@@ -782,7 +779,7 @@
          <item>
           <widget class="QLabel" name="labelUpdate">
            <property name="text">
-            <string>&lt;a href=&quot;https://github.com/tlslink/anylink-client/releases&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;Check Updates&lt;/span&gt;&lt;/a&gt;</string>
+            <string>&lt;a href=&quot;https://plitun.com&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;Check Updates&lt;/span&gt;&lt;/a&gt;</string>
            </property>
            <property name="openExternalLinks">
             <bool>true</bool>

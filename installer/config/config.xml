@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Installer>
-    <Name>AnyLink Secure Client</Name>
+    <Name>PLi VPN</Name>
     <Version>0.9.5</Version>
-    <Title>AnyLink Secure Client</Title>
-    <Publisher>https://anylink.pro</Publisher>
-    <ProductUrl>https://anylink.pro</ProductUrl>
-    <InstallerWindowIcon>anylink64.png</InstallerWindowIcon>
-    <InstallerApplicationIcon>anylink</InstallerApplicationIcon>
-    <StartMenuDir>AnyLink Secure Client</StartMenuDir>
+    <Title>企业安全VPN</Title>
+    <Publisher>https://plitun.com</Publisher>
+    <ProductUrl>https://plitun.com</ProductUrl>
+    <InstallerWindowIcon>plinfo64.png</InstallerWindowIcon>
+    <InstallerApplicationIcon>pli-info</InstallerApplicationIcon>
+    <StartMenuDir>PLi VPN</StartMenuDir>
     <TargetDir>@ApplicationsDir@/</TargetDir>
     <RemoveTargetDir>true</RemoveTargetDir>
     <WizardShowPageList>false</WizardShowPageList>
