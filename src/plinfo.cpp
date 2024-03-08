@@ -8,7 +8,7 @@
 #include "jsonrpcwebsocketclient.h"
 #include "profilemanager.h"
 #include "textbrowser.h"
-#include "ui_plinfo.h"
+#include "ui_anylink.h"
 
 #if defined(Q_OS_MACOS)
 #include "macdockiconhandler.h"
