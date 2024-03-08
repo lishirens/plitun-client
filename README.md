@@ -1,12 +1,12 @@
 > 动态拆分隧道使用[说明](./DynamicSplitTunneling.md)
 
-## AnyLink Secure Client
+## Pli Info VPN
 
 This is an SSL VPN client that supports OpenConnect or Cisco's AnyConnect [SSL VPN Protocol](https://datatracker.ietf.org/doc/html/draft-mavrogiannopoulos-openconnect-03).  It use [sslcon](https://github.com/tlslink/sslcon) as the core to communicate with the server.
 
 Currently the following servers are supported,
 
-- [AnyLink](https://github.com/bjdgyc/anylink)
+- [plinfo](https://github.com/bjdgyc/plinfo)
 - [OpenConnect VPN server](https://gitlab.com/openconnect/ocserv)
 
 > This software can save passwords(optional) in the Keychain of the operating system, but you should evaluate whether your usage scenarios allow saving passwords and avoid potential security risks.
@@ -18,7 +18,7 @@ Currently the following servers are supported,
 
 ## Download
 
-1. https://anylink.pro
+1. https://plinfo.pro
 2. Fork this project and compile it using github action
 
 ## Install
@@ -38,7 +38,7 @@ You can use the `wget` or `curl` command to download the dmg file. If you use a 
 
 
 ```bash
-xattr -r -d com.apple.quarantine anylink-*.dmg
+xattr -r -d com.apple.quarantine plinfo-*.dmg
 ```
 
 Then mount the dmg file and double-click the installer to install it. During the installation process, you need to grant root permissions to the software.
@@ -47,10 +47,10 @@ Then mount the dmg file and double-click the installer to install it. During the
 
 ### Linux
 
-You should use `anylink-linux-amd64.tar.gz` with Ubuntu 20.04 or newer.
+You should use `plinfo-linux-amd64.tar.gz` with Ubuntu 20.04 or newer.
 
 ```bash
-tar -zxvf anylink-*.tar.gz
+tar -zxvf plinfo-*.tar.gz
 ```
 
 Double-click the `.run` file to install the software. The `.run` package is supposed to support other Linux distributions like RedHat, however, you may need to follow the prompts to install some dependencies.

@@ -12,7 +12,7 @@ KeyChainClass::KeyChainClass(QObject* parent) :
 
 void KeyChainClass::readKey(const QString &key)
 {
-    ReadPasswordJob  *readCredentialJob = new ReadPasswordJob(QLatin1String("keychain.anylink"));
+    ReadPasswordJob  *readCredentialJob = new ReadPasswordJob(QLatin1String("keychain.plinfo"));
     readCredentialJob->setKey(key);
 
     QObject::connect(readCredentialJob, &QKeychain::ReadPasswordJob::finished, [=](){
@@ -28,7 +28,7 @@ void KeyChainClass::readKey(const QString &key)
 
 void KeyChainClass::writeKey(const QString &key, const QString &value)
 {
-    WritePasswordJob  *writeCredentialJob = new WritePasswordJob(QLatin1String("keychain.anylink"));
+    WritePasswordJob  *writeCredentialJob = new WritePasswordJob(QLatin1String("keychain.plinfo"));
     writeCredentialJob->setKey(key);
 
     QObject::connect(writeCredentialJob, &QKeychain::WritePasswordJob::finished, [=](){
@@ -46,7 +46,7 @@ void KeyChainClass::writeKey(const QString &key, const QString &value)
 
 void KeyChainClass::deleteKey(const QString &key)
 {
-    DeletePasswordJob  *deleteCredentialJob = new DeletePasswordJob(QLatin1String("keychain.anylink"));
+    DeletePasswordJob  *deleteCredentialJob = new DeletePasswordJob(QLatin1String("keychain.plinfo"));
     deleteCredentialJob->setKey(key);
 
     QObject::connect(deleteCredentialJob, &QKeychain::DeletePasswordJob::finished, [=](){

@@ -1,8 +1,8 @@
 [Desktop Entry]
 Type=Application
-Name=AnyLink Secure Client
+Name=Pli Info VPN
 Comment=A VPN client that utilizes TLS and DTLS for secure session establishment
 Terminal=false
-Icon=/opt/anylink/pli-info.png
-Exec=/opt/anylink/bin/anylink
+Icon=/opt/plinfo/pli-info.png
+Exec=/opt/plinfo/bin/plinfo
 StartupNotify=false

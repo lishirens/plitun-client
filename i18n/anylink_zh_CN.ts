@@ -4,12 +4,12 @@
         <context>
         <name>Pli-info</name>
     <message>
-        <location filename="../src/anylink.cpp" line="+29"/>
+        <location filename="../src/plinfo.cpp" line="+29"/>
         <source>Pli info VPN</source>
         <translation>企业安全VPN</translation>
     </message>
     <message>
-        <location filename="../src/anylink.ui" line="+58"/>
+        <location filename="../src/plinfo.ui" line="+58"/>
         <source>Gateway</source>
         <translation>网关</translation>
     </message>
@@ -35,7 +35,7 @@
     </message>
     <message>
         <location line="+65"/>
-        <location filename="../src/anylink.cpp" line="+210"/>
+        <location filename="../src/plinfo.cpp" line="+210"/>
         <source>Connect</source>
         <translation>连接</translation>
     </message>
@@ -101,12 +101,12 @@
     </message>
     <message>
         <location line="+21"/>
-        <source>Connect to the last used VPN when AnyLink is started</source>
+        <source>Connect to the last used VPN when plinfo is started</source>
         <translation>启动应用后自动连接最近使用的 VPN</translation>
     </message>
     <message>
         <location line="+7"/>
-        <source>Minimize AnyLink on VPN connect</source>
+        <source>Minimize plinfo on VPN connect</source>
         <translation>VPN 连接成功后最小化当前窗口</translation>
     </message>
     <message>
@@ -156,11 +156,11 @@
     </message>
     <message>
         <location line="+41"/>
-        <source>&lt;a href=&quot;https://github.com/tlslink/anylink-client/releases&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;Check Updates&lt;/span&gt;&lt;/a&gt;</source>
+        <source>&lt;a href=&quot;https://github.com/tlslink/plinfo-client/releases&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;Check Updates&lt;/span&gt;&lt;/a&gt;</source>
         <translation>&lt;a href=&quot;https://plitun.com&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;检查更新&lt;/span&gt;&lt;/a&gt;</translation>
     </message>
     <message>
-        <location filename="../src/anylink.cpp" line="+200"/>
+        <location filename="../src/plinfo.cpp" line="+200"/>
         <source>Couldn&apos;t open log file</source>
         <translation>未能打开日志文件</translation>
     </message>

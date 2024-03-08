@@ -2,7 +2,7 @@
 #include "configmanager.h"
 #include <QMessageBox>
 
-QString agentName = "AnyLink Secure Client";
+QString agentName = "Pli Info VPN";
 
 QString appVersion = "0.9.5";
 
