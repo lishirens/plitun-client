@@ -2,7 +2,7 @@
 #include "configmanager.h"
 #include <QMessageBox>
 
-QString agentName = "plinfo Secure Client";
+QString agentName = "Plinfo Secure Client";
 
 QString appVersion = "0.9.5";
 

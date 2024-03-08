@@ -1,7 +1,7 @@
 QT       += core gui websockets widgets
 
 CONFIG += c++14
-TRANSLATIONS = i18n/plinfo_zh_CN.ts
+TRANSLATIONS = i18n/anylink_zh_CN.ts
 
 win32|macx|linux:!android {
     include(3rdparty/SingleApplication/singleapplication.pri)
@@ -47,37 +47,37 @@ VERSION = 0.9.5
 
 macx {
     # https://doc.qt.io/qt-6/qmake-variable-reference.html#qmake-info-plist The value of QMAKE_BUNDLE should not be set directly by the project.
-    QMAKE_TARGET_BUNDLE_PREFIX = pro.plinfo
+    QMAKE_TARGET_BUNDLE_PREFIX = pro.anylink
 
     HEADERS += src/macdockiconhandler.h
     SOURCES += src/macdockiconhandler.mm
 
-    TARGET = plinfo
+    TARGET = AnyLink
     # QMAKE_APPLE_DEVICE_ARCHS = x86_64
-    ICON = resource/mac/plinfo.icns
+    ICON = resource/mac/anylink.icns
     QMAKE_INFO_PLIST = resource/mac/Info.plist
     DESTDIR = $$PWD/out/bin
 
-    copyIcon(resource/mac/plinfo.icns)
+    copyIcon(resource/mac/anylink.icns)
 }
 
 win32 {
     # https://doc.qt.io/qt-6/qmake-variable-reference.html#version
     #RC_FILE = resource.rc
-    RC_ICONS = resource\windows\plinfo.ico
-    QMAKE_TARGET_PRODUCT = "plinfo Secure Client"
-    QMAKE_TARGET_COMPANY = "https://plinfo.pro"
-    QMAKE_TARGET_DESCRIPTION = "plinfo Secure Client"
-    QMAKE_TARGET_COPYRIGHT = "Copyright 2022-2023 https://plinfo.pro. All rights reserved."
+    RC_ICONS = resource\windows\anylink.ico
+    QMAKE_TARGET_PRODUCT = "Plinfo Secure Client"
+    QMAKE_TARGET_COMPANY = "https://anylink.pro"
+    QMAKE_TARGET_DESCRIPTION = "Plinfo Secure Client"
+    QMAKE_TARGET_COPYRIGHT = "Copyright 2022-2023 https://anylink.pro. All rights reserved."
 
     DESTDIR = $$PWD/out/bin
-    copyIcon(assets/plinfo64.png resource/windows/plinfo.ico)
+    copyIcon(assets/plinfo.png resource/windows/anylink.ico)
 }
 
 linux:!android {
     DESTDIR = $$PWD/out/opt/plinfo/bin
-    copyToDestDir(assets/plinfo.png resource/linux/plinfo.desktop)
-    copyIcon(assets/plinfo64.png)
+    copyToDestDir(assets/plinfo.png resource/linux/anylink.desktop)
+    copyIcon(assets/plinfo.png)
 }
 
 # You can make your code fail to compile if it uses deprecated APIs.
@@ -85,7 +85,7 @@ linux:!android {
 DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    src/plinfo.cpp \
+    src/anylink.cpp \
     src/common.cpp \
     src/configmanager.cpp \
     src/detaildialog.cpp \
@@ -97,7 +97,7 @@ SOURCES += \
     src/textbrowser.cpp
 
 HEADERS += \
-    src/plinfo.h \
+    src/anylink.h \
     src/common.h \
     src/configmanager.h \
     src/detaildialog.h \
@@ -108,7 +108,7 @@ HEADERS += \
     src/textbrowser.h
 
 FORMS += \
-    src/plinfo.ui \
+    src/anylink.ui \
     src/detaildialog.ui \
     src/profilemanager.ui \
     src/textbrowser.ui

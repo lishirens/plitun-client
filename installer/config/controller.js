@@ -30,11 +30,11 @@ Controller.prototype.onInstallationFinished = function ()
 
     if (installer.isInstaller() && installer.status === QInstaller.Success) {
         if (systemInfo.kernelType === "linux") {
-            installer.executeDetached("@TargetDir@/bin/plinfo");
+            installer.executeDetached("@TargetDir@/bin/anylink");
         } else if (systemInfo.kernelType === "winnt") {
-            installer.executeDetached("@TargetDir@/plinfo.exe");
+            installer.executeDetached("@TargetDir@/anylink.exe");
         } else if (systemInfo.kernelType === "darwin") {
-            installer.executeDetached("@TargetDir@/plinfo.app/Contents/MacOS/plinfo");
+            installer.executeDetached("@TargetDir@/AnyLink.app/Contents/MacOS/AnyLink");
         }
 
        // if (installer.value("UILanguage") === "zh_CN") {
@@ -48,7 +48,7 @@ Controller.prototype.onInstallationFinished = function ()
 //{
 //    try {
 //        if (installer.isUninstaller()) {
-//            QDesktopServices.openUrl("https://plinfo.pro");
+//            QDesktopServices.openUrl("https://anylink.pro");
 //        }
 //    } catch(e) {
 //        console.log(e);

@@ -10,16 +10,16 @@ function Component()
     var uninstaller = installer.value("MaintenanceToolName");
 
     if (systemInfo.kernelType === "linux") {
-        installer.setValue("TargetDir", targetDir + "plinfo");
+        installer.setValue("TargetDir", targetDir + "anylink");
 
         uninstaller = installer.value("TargetDir") + "/" + uninstaller;
 
     } else if (systemInfo.kernelType === "winnt") {
-        installer.setValue("TargetDir", targetDir + "plinfo");
+        installer.setValue("TargetDir", targetDir + "AnyLink");
 
         uninstaller = installer.value("TargetDir") + "/" + uninstaller + ".exe";
     } else if (systemInfo.kernelType === "darwin") {
-        installer.setValue("TargetDir", targetDir + "plinfo");
+        installer.setValue("TargetDir", targetDir + "AnyLink");
 
         uninstaller = installer.value("TargetDir") + "/" + uninstaller + ".app/Contents/MacOS/uninstall";
     }
@@ -28,7 +28,7 @@ function Component()
         if (installer.fileExists(uninstaller)) {
             installer.execute(uninstaller);
         }
-//         console.log("plinfo running status: " + installer.isProcessRunning("plinfo"))
+//         console.log("anylink running status: " + installer.isProcessRunning("anylink"))
 //         console.log("vpnui running status: " + installer.isProcessRunning("vpnui"))
 
         // request when component really installing
@@ -36,10 +36,10 @@ function Component()
     }
 
     if (systemInfo.kernelType === "darwin") {
-        component.addStopProcessForUpdateRequest("plinfo");
+        component.addStopProcessForUpdateRequest("AnyLink");
     } else {
         // kill self when install and uninstall
-        component.addStopProcessForUpdateRequest("plinfo");
+        component.addStopProcessForUpdateRequest("anylink");
     }
 }
 
@@ -53,7 +53,7 @@ Component.prototype.createOperations = function()
         component.createOperations();
 
         // will be auto removed on uninstall
-        component.addOperation("Copy", "@TargetDir@/plinfo.desktop", "/usr/share/applications/plinfo.desktop");
+        component.addOperation("Copy", "@TargetDir@/anylink.desktop", "/usr/share/applications/anylink.desktop");
 
         // install and start the service or stop and remove the service
         component.addElevatedOperation("Execute", "@TargetDir@/bin/vpnagent","install",
@@ -68,14 +68,14 @@ Component.prototype.createOperations = function()
 
         //开始菜单快捷方式
         component.addOperation("CreateShortcut",
-                               "@TargetDir@/plinfo.exe",
-                               "@StartMenuDir@/plinfo Secure Client.lnk",
+                               "@TargetDir@/anylink.exe",
+                               "@StartMenuDir@/Plinfo Secure Client.lnk",
                                "workingDirectory=@TargetDir@");
 
         //桌面快捷方式
         component.addOperation("CreateShortcut",
-                               "@TargetDir@/plinfo.exe",
-                               "@DesktopDir@/plinfo Secure Client.lnk",
+                               "@TargetDir@/anylink.exe",
+                               "@DesktopDir@/Plinfo Secure Client.lnk",
                                "workingDirectory=@TargetDir@");
 
 
@@ -83,12 +83,12 @@ Component.prototype.createOperations = function()
                                 "UNDOEXECUTE","@TargetDir@/vpnagent.exe","uninstall");
     } else if (systemInfo.kernelType === "darwin") {
         component.createOperations();
-        component.addOperation("CreateLink", "@ApplicationsDir@/plinfo.app", "@TargetDir@/plinfo.app");
+        component.addOperation("CreateLink", "@ApplicationsDir@/AnyLink.app", "@TargetDir@/AnyLink.app");
 
         if (installer.gainAdminRights()) {
             // install and start the service or stop and remove the service
-            component.addElevatedOperation("Execute", "@TargetDir@/plinfo.app/Contents/MacOS/vpnagent","install",
-                                    "UNDOEXECUTE","@TargetDir@/plinfo.app/Contents/MacOS/vpnagent","uninstall");
+            component.addElevatedOperation("Execute", "@TargetDir@/AnyLink.app/Contents/MacOS/vpnagent","install",
+                                    "UNDOEXECUTE","@TargetDir@/AnyLink.app/Contents/MacOS/vpnagent","uninstall");
             installer.dropAdminRights()
         }
     }

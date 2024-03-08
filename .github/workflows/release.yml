@@ -142,12 +142,12 @@ jobs:
           # probonopd
           wget -c -nv "https://github.com/probonopd/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-x86_64.AppImage"
           chmod a+x linuxdeployqt-continuous-x86_64.AppImage
-          ./linuxdeployqt-continuous-x86_64.AppImage out/opt/plinfo/bin/plinfo -extra-plugins=platformthemes/libqgtk3.so -no-copy-copyright-files -no-translations -unsupported-allow-new-glibc
+          ./linuxdeployqt-continuous-x86_64.AppImage out/opt/plinfo/bin/anylink -extra-plugins=platformthemes/libqgtk3.so -no-copy-copyright-files -no-translations -unsupported-allow-new-glibc
           cp fcitx-qt5-master/qt6/platforminputcontext/libfcitxplatforminputcontextplugin-qt6.so out/opt/plinfo/plugins/platforminputcontexts/
           wget -c -nv https://github.com/tlslink/sslcon/releases/download/continuous/sslcon-linux-amd64.tar.gz
           tar -zxvf sslcon-*.tar.gz
           cp vpnagent sslcon out/opt/plinfo/bin
-          7z a installer/packages/root/data/plinfo.7z ./out/opt/plinfo/*
+          7z a installer/packages/root/data/anylink.7z ./out/opt/plinfo/*
           cd installer
           wget -c -nv https://mirrors.ustc.edu.cn/qtproject/official_releases/qt-installer-framework/4.7.0/QtInstallerFramework-linux-x64-4.7.0.run
           chmod +x ./*.run
@@ -156,11 +156,11 @@ jobs:
           chmod +x ./*.run
           tar -zcvf "${{ github.workspace }}"/archive/${{ env.ARCHIVE_NAME }} ${{ matrix.installer-name }}
         elif [ "${{ matrix.build }}" = "windows" ]; then
-          windeployqt out/bin/plinfo.exe --no-translations --no-system-d3d-compiler --no-opengl-sw --no-svg
+          windeployqt out/bin/anylink.exe --no-translations --no-system-d3d-compiler --no-opengl-sw --no-svg
           curl -k -L -O https://github.com/tlslink/sslcon/releases/download/continuous/sslcon-windows10-amd64.7z
           7z x -y sslcon-*.7z
           cp vpnagent.exe sslcon.exe out/bin
-          7z a installer/packages/root/data/plinfo.7z ./out/bin/*
+          7z a installer/packages/root/data/anylink.7z ./out/bin/*
           cd installer
           curl -k -O -L https://mirrors.ustc.edu.cn/qtproject/archive/qt-installer-framework/4.5.2/QtInstallerFramework-windows-x64-4.5.2.exe
           ./QtInstallerFramework-windows-x64-4.5.2.exe --al --da -c -t `pwd`/ifw in
@@ -176,10 +176,10 @@ jobs:
           cd ../out/bin
           curl -k -L -O https://github.com/tlslink/sslcon/releases/download/continuous/sslcon-macOS-amd64.tar.gz
           tar -zxvf sslcon-*.tar.gz
-          cp vpnagent sslcon plinfo.app/Contents/MacOS
-          macdeployqt plinfo.app
+          cp vpnagent sslcon AnyLink.app/Contents/MacOS
+          macdeployqt AnyLink.app
           mkdir -p ../../installer/packages/root/data
-          ../../installer/ifw/bin/archivegen ../../installer/packages/root/data/plinfo.7z ./plinfo.app
+          ../../installer/ifw/bin/archivegen ../../installer/packages/root/data/anylink.7z ./AnyLink.app
           cd ../../installer
           ./ifw/bin/binarycreator --offline-only -c config/config.xml -p packages ${{ matrix.installer-name }}
           hdiutil create -fs HFS+ -srcfolder ${{ matrix.installer-name }}.app -format UDZO "${{ github.workspace }}"/archive/${{ env.ARCHIVE_NAME }}
@@ -191,10 +191,10 @@ jobs:
           cd ../out/bin
           curl -k -L -O https://github.com/tlslink/sslcon/releases/download/continuous/sslcon-macOS-arm64.tar.gz
           tar -zxvf sslcon-*.tar.gz
-          cp vpnagent sslcon plinfo.app/Contents/MacOS
-          macdeployqt plinfo.app
+          cp vpnagent sslcon AnyLink.app/Contents/MacOS
+          macdeployqt AnyLink.app
           mkdir -p ../../installer/packages/root/data
-          ../../installer/ifw/bin/archivegen ../../installer/packages/root/data/plinfo.7z ./plinfo.app
+          ../../installer/ifw/bin/archivegen ../../installer/packages/root/data/anylink.7z ./AnyLink.app
           cd ../../installer
           ./ifw/bin/binarycreator --offline-only -c config/config.xml -p packages ${{ matrix.installer-name }}
           hdiutil create -fs HFS+ -srcfolder ${{ matrix.installer-name }}.app -format UDZO "${{ github.workspace }}"/archive/${{ env.ARCHIVE_NAME }}

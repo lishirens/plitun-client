@@ -1,5 +1,5 @@
-#ifndef plinfo_H
-#define plinfo_H
+#ifndef ANYLINK_H
+#define ANYLINK_H
 
 #include <QWidget>
 #include <QIcon>
@@ -8,7 +8,7 @@
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
-class plinfo;
+class AnyLink;
 }
 QT_END_NAMESPACE
 
@@ -19,15 +19,15 @@ class QSystemTrayIcon;
 class QMenu;
 class QComboBox;
 
-class plinfo : public QWidget
+class AnyLink : public QWidget
 {
     Q_OBJECT
 
 public:
     enum { STATUS, CONFIG, CONNECT, DISCONNECT, RECONNECT, INTERFACE, ABORT, STAT };
 
-    plinfo(QWidget *parent = nullptr);
-    ~plinfo();
+    AnyLink(QWidget *parent = nullptr);
+    ~AnyLink();
 
     JsonRpcWebSocketClient *rpc = nullptr;
 
@@ -43,7 +43,7 @@ protected:
     void showEvent(QShowEvent *event) override;
 
 private:
-    Ui::plinfo *ui;
+    Ui::AnyLink *ui;
     QSystemTrayIcon *trayIcon = nullptr;
     QMenu *trayIconMenu;
     QComboBox *iconComboBox;
@@ -83,4 +83,4 @@ private slots:
     void on_buttonDetails_clicked();
     void on_buttonSecurityTips_clicked();
 };
-#endif // plinfo_H
+#endif // ANYLINK_H

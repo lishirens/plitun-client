@@ -1,13 +1,13 @@
 #include "detaildialog.h"
 #include "ui_detaildialog.h"
-#include "plinfo.h"
+#include "anylink.h"
 #include "jsonrpcwebsocketclient.h"
 #include <QHostAddress>
 #include <QJsonObject>
 
-DetailDialog::DetailDialog(plinfo *parent) :
+DetailDialog::DetailDialog(AnyLink *parent) :
     QDialog(parent),
-    ui(new Ui::DetailDialog), plinfo(parent)
+    ui(new Ui::DetailDialog), anylink(parent)
 {
     ui->setupUi(this);
     ui->tableExcluded->setColumnCount(2);
@@ -88,8 +88,8 @@ void DetailDialog::showEvent(QShowEvent *event)
     Q_UNUSED(event)
     // 每隔 1 秒获取流量统计
     connect(&timer, &QTimer::timeout, this, [this]() {
-        if(plinfo->rpc->isConnected()) {
-            plinfo->rpc->callAsync("stat", plinfo::STAT, [this](const QJsonValue & result) {
+        if(anylink->rpc->isConnected()) {
+            anylink->rpc->callAsync("stat", AnyLink::STAT, [this](const QJsonValue & result) {
                 const QJsonObject &stat = result.toObject();
                 if(!stat.contains("code")) {
                     ui->labelBytesSent->setText(format(stat["bytesSent"].toDouble()));

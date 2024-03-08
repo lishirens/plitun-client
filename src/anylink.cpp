@@ -1,4 +1,4 @@
-#include "plinfo.h"
+#include "anylink.h"
 #include <QCloseEvent>
 #include <QFile>
 #include <QJsonValue>
@@ -14,9 +14,9 @@
 #include "macdockiconhandler.h"
 #endif
 
-plinfo::plinfo(QWidget *parent)
+AnyLink::AnyLink(QWidget *parent)
     : QWidget(parent)
-    , ui(new Ui::plinfo), m_vpnConnected(false)
+    , ui(new Ui::AnyLink), m_vpnConnected(false)
 {
     ui->setupUi(this);
 #ifndef Q_OS_MACOS
@@ -26,11 +26,11 @@ plinfo::plinfo(QWidget *parent)
     setWindowFlags(Qt::CustomizeWindowHint | Qt::WindowTitleHint | Qt::WindowMinimizeButtonHint
                    | Qt::WindowCloseButtonHint | Qt::WindowStaysOnTopHint);
 #endif
-    setWindowTitle(tr("plinfo Secure Client") + " v" + appVersion);
+    setWindowTitle(tr("Plinfo Secure Client") + " v" + appVersion);
 
 #if defined(Q_OS_LINUX) || defined(Q_OS_WIN)
     loadStyleSheet(":/resource/style.qss");
-    setWindowIcon(QIcon(":/images/plinfo64.png"));
+    setWindowIcon(QIcon(":/images/plinfo.png"));
 #endif
     // qDebug() << screen()->devicePixelRatio() << geometry().width() << geometry().height() << QSysInfo::kernelType();
     // 需要联合使用 QSysInfo::kernelType() 和  QSysInfo::productType()
@@ -81,9 +81,9 @@ plinfo::plinfo(QWidget *parent)
     // exit
 }
 
-plinfo::~plinfo() { delete ui; }
+AnyLink::~AnyLink() { delete ui; }
 
-void plinfo::closeEvent(QCloseEvent *event)
+void AnyLink::closeEvent(QCloseEvent *event)
 {
     if(m_vpnConnected) {
         hide();
@@ -96,7 +96,7 @@ void plinfo::closeEvent(QCloseEvent *event)
     }
 }
 
-void plinfo::showEvent(QShowEvent *event)
+void AnyLink::showEvent(QShowEvent *event)
 {
     if(trayIcon == nullptr) {
         QTimer::singleShot(50, this, [this]() { afterShowOneTime(); });
@@ -104,7 +104,7 @@ void plinfo::showEvent(QShowEvent *event)
     event->accept();
 }
 
-void plinfo::center()
+void AnyLink::center()
 {
     QRect screenGeometry = screen()->geometry();
     QRect windowGeometry = frameGeometry();
@@ -116,7 +116,7 @@ void plinfo::center()
     move(centerPoint);
 }
 
-void plinfo::loadStyleSheet(const QString &styleSheetFile)
+void AnyLink::loadStyleSheet(const QString &styleSheetFile)
 
 {
     QFile file(styleSheetFile);
@@ -130,14 +130,14 @@ void plinfo::loadStyleSheet(const QString &styleSheetFile)
     }
 }
 
-void plinfo::createTrayActions()
+void AnyLink::createTrayActions()
 {
     actionConnect = new QAction(tr("Connect Gateway"), this);
     // not lambda must have this
-    connect(actionConnect, &QAction::triggered, this, &plinfo::connectVPN);
+    connect(actionConnect, &QAction::triggered, this, &AnyLink::connectVPN);
 
     actionDisconnect = new QAction(tr("Disconnect Gateway"), this);
-    connect(actionDisconnect, &QAction::triggered, this, &plinfo::disconnectVPN);
+    connect(actionDisconnect, &QAction::triggered, this, &AnyLink::disconnectVPN);
 
     actionConfig = new QAction(tr("Show Panel"), this);
     connect(actionConfig, &QAction::triggered, this, [this](){
@@ -149,7 +149,7 @@ void plinfo::createTrayActions()
     connect(actionQuit, &QAction::triggered, qApp, &QApplication::quit, Qt::QueuedConnection);
 }
 
-void plinfo::createTrayIcon()
+void AnyLink::createTrayIcon()
 {
     trayIconMenu = new QMenu(this);
     trayIconMenu->addAction(actionConnect);
@@ -182,7 +182,7 @@ void plinfo::createTrayIcon()
 #endif
 }
 
-void plinfo::initConfig()
+void AnyLink::initConfig()
 {
     ui->checkBoxAutoLogin->setChecked(configManager->config["autoLogin"].toBool());
     ui->checkBoxMinimize->setChecked(configManager->config["minimize"].toBool());
@@ -219,7 +219,7 @@ void plinfo::initConfig()
     });
 }
 
-void plinfo::afterShowOneTime()
+void AnyLink::afterShowOneTime()
 {
     createTrayActions();
     createTrayIcon();
@@ -240,7 +240,7 @@ void plinfo::afterShowOneTime()
         }
     });
 
-    connect(this, &plinfo::vpnConnected, this, [this]() {
+    connect(this, &AnyLink::vpnConnected, this, [this]() {
         getVPNStatus();
         m_vpnConnected = true;
         activeDisconnect = false;
@@ -262,7 +262,7 @@ void plinfo::afterShowOneTime()
         timer.start(60 * 1000);
     });
 
-    connect(this, &plinfo::vpnClosed, [this]() {
+    connect(this, &AnyLink::vpnClosed, [this]() {
         m_vpnConnected = false;
         trayIcon->setIcon(iconNotConnected);
         trayIcon->setToolTip("");
@@ -321,7 +321,7 @@ void plinfo::afterShowOneTime()
     rpc->connectToServer(QUrl("ws://127.0.0.1:6210/rpc"));
 }
 
-void plinfo::resetVPNStatus()
+void AnyLink::resetVPNStatus()
 {
     ui->labelChannelType->clear();
     ui->labelTlsCipherSuite->clear();
@@ -342,7 +342,7 @@ void plinfo::resetVPNStatus()
 /**
  * called by JsonRpcWebSocketClient::connected and every time setting changed
  */
-void plinfo::configVPN()
+void AnyLink::configVPN()
 {
     if(rpc->isConnected()) {
         QJsonObject args{{"log_level", ui->checkBoxDebug->isChecked() ? "Debug" : "Info"},
@@ -358,7 +358,7 @@ void plinfo::configVPN()
     }
 }
 
-void plinfo::connectVPN(bool reconnect)
+void AnyLink::connectVPN(bool reconnect)
 {
     if(rpc->isConnected()) {
         // profile may be modified, and may not emit currentTextChanged signal
@@ -406,7 +406,7 @@ void plinfo::connectVPN(bool reconnect)
     }
 }
 
-void plinfo::disconnectVPN()
+void AnyLink::disconnectVPN()
 {
     if(rpc->isConnected()) {
         ui->progressBar->start();
@@ -416,7 +416,7 @@ void plinfo::disconnectVPN()
     }
 }
 
-void plinfo::getVPNStatus()
+void AnyLink::getVPNStatus()
 {
     rpc->callAsync("status", STATUS, [this](const QJsonValue & result) {
         const QJsonObject &status = result.toObject();
@@ -440,7 +440,7 @@ void plinfo::getVPNStatus()
     });
 }
 
-void plinfo::on_buttonConnect_clicked()
+void AnyLink::on_buttonConnect_clicked()
 {
     if(rpc->isConnected()) {
         if(m_vpnConnected) {
@@ -451,12 +451,12 @@ void plinfo::on_buttonConnect_clicked()
     }
 }
 
-void plinfo::on_buttonProfile_clicked()
+void AnyLink::on_buttonProfile_clicked()
 {
     profileManager->exec();
 }
 
-void plinfo::on_buttonViewLog_clicked()
+void AnyLink::on_buttonViewLog_clicked()
 {
     QString filePath = tempLocation + "/vpnagent.log";
     QFile loadFile(filePath);
@@ -489,12 +489,12 @@ void plinfo::on_buttonViewLog_clicked()
     textBrowser.exec();
 }
 
-void plinfo::on_buttonDetails_clicked()
+void AnyLink::on_buttonDetails_clicked()
 {
     detailDialog->exec();
 }
 
-void plinfo::on_buttonSecurityTips_clicked()
+void AnyLink::on_buttonSecurityTips_clicked()
 {
     QString readme = "README.md";
     if (QLocale::system().name() == "zh_CN") {

@@ -1,4 +1,4 @@
-#include "plinfo.h"
+#include "anylink.h"
 #include "common.h"
 #include "configmanager.h"
 #include <QApplication>
@@ -22,7 +22,7 @@ int main(int argc, char *argv[])
     qSetMessagePattern("%{type}:[%{file}:%{line}]  %{message}");
     //    qDebug() << QStyleFactory::keys();
     //    QApplication::setStyle("fusion");
-    QApplication::setApplicationName("plinfo");
+    QApplication::setApplicationName("AnyLink");
     configLocation = QStandardPaths::writableLocation(QStandardPaths::AppConfigLocation);
 //    qDebug() << configLocation;
     tempLocation = QStandardPaths::writableLocation(QStandardPaths::TempLocation);
@@ -42,7 +42,7 @@ int main(int argc, char *argv[])
         if(configManager->config["local"].toBool()) {
 //            qDebug() << QLocale::system().name();
             // embedded in qrc
-            if(myTranslator.load(QLocale(), QLatin1String("plinfo"), QLatin1String("_"), QLatin1String(":/i18n"))) {
+            if(myTranslator.load(QLocale(), QLatin1String("anylink"), QLatin1String("_"), QLatin1String(":/i18n"))) {
                 app.installTranslator(&myTranslator);
             }
         }
@@ -50,11 +50,11 @@ int main(int argc, char *argv[])
 
 //    outdateCheck();
 
-    plinfo w;
+    AnyLink w;
     w.show();
 
     QApplication::setQuitOnLastWindowClosed(false);
-    QObject::connect(&app, &SingleApplication::instanceStarted, &w, &plinfo::showNormal);
+    QObject::connect(&app, &SingleApplication::instanceStarted, &w, &AnyLink::showNormal);
 
     return app.exec();
 }

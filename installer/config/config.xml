@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Installer>
-    <Name>plinfo Secure Client</Name>
+    <Name>Plinfo Secure Client</Name>
     <Version>0.9.5</Version>
-    <Title>plinfo Secure Client</Title>
-    <Publisher>https://plinfo.pro</Publisher>
-    <ProductUrl>https://plinfo.pro</ProductUrl>
-    <InstallerWindowIcon>plinfo64.png</InstallerWindowIcon>
-    <InstallerApplicationIcon>plinfo</InstallerApplicationIcon>
-    <StartMenuDir>plinfo Secure Client</StartMenuDir>
+    <Title>Plinfo Secure Client</Title>
+    <Publisher>https://anylink.pro</Publisher>
+    <ProductUrl>https://anylink.pro</ProductUrl>
+    <InstallerWindowIcon>plinfo.png</InstallerWindowIcon>
+    <InstallerApplicationIcon>anylink</InstallerApplicationIcon>
+    <StartMenuDir>Plinfo Secure Client</StartMenuDir>
     <TargetDir>@ApplicationsDir@/</TargetDir>
     <RemoveTargetDir>true</RemoveTargetDir>
     <WizardShowPageList>false</WizardShowPageList>

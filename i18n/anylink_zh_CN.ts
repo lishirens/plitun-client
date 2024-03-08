@@ -2,14 +2,14 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="zh_CN">
 <context>
-    <name>plinfo</name>
+    <name>Plinfo</name>
     <message>
-        <location filename="../src/plinfo.cpp" line="+29"/>
-        <source>plinfo Secure Client</source>
-        <translation>plinfo 安全客户端</translation>
+        <location filename="../src/anylink.cpp" line="+29"/>
+        <source>Plinfo Secure Client</source>
+        <translation>Plinfo 安全客户端</translation>
     </message>
     <message>
-        <location filename="../src/plinfo.ui" line="+58"/>
+        <location filename="../src/anylink.ui" line="+58"/>
         <source>Gateway</source>
         <translation>网关</translation>
     </message>
@@ -35,7 +35,7 @@
     </message>
     <message>
         <location line="+65"/>
-        <location filename="../src/plinfo.cpp" line="+210"/>
+        <location filename="../src/anylink.cpp" line="+210"/>
         <source>Connect</source>
         <translation>连接</translation>
     </message>
@@ -101,12 +101,12 @@
     </message>
     <message>
         <location line="+21"/>
-        <source>Connect to the last used VPN when plinfo is started</source>
+        <source>Connect to the last used VPN when Plinfo is started</source>
         <translation>启动应用后自动连接最近使用的 VPN</translation>
     </message>
     <message>
         <location line="+7"/>
-        <source>Minimize plinfo on VPN connect</source>
+        <source>Minimize Plinfo on VPN connect</source>
         <translation>VPN 连接成功后最小化当前窗口</translation>
     </message>
     <message>
@@ -151,16 +151,16 @@
     </message>
     <message>
         <location line="+126"/>
-        <source>&lt;a href=&quot;https://github.com/tlslink/plinfo-client/issues&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;Getting Help&lt;/span&gt;&lt;/a&gt;</source>
-        <translation>&lt;a href=&quot;https://github.com/tlslink/plinfo-client/issues&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;获取帮助&lt;/span&gt;&lt;/a&gt;</translation>
+        <source>&lt;a href=&quot;https://github.com/tlslink/anylink-client/issues&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;Getting Help&lt;/span&gt;&lt;/a&gt;</source>
+        <translation>&lt;a href=&quot;https://github.com/tlslink/anylink-client/issues&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;获取帮助&lt;/span&gt;&lt;/a&gt;</translation>
     </message>
     <message>
         <location line="+41"/>
-        <source>&lt;a href=&quot;https://github.com/tlslink/plinfo-client/releases&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;Check Updates&lt;/span&gt;&lt;/a&gt;</source>
-        <translation>&lt;a href=&quot;https://plinfo.pro&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;检查更新&lt;/span&gt;&lt;/a&gt;</translation>
+        <source>&lt;a href=&quot;https://github.com/tlslink/anylink-client/releases&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;Check Updates&lt;/span&gt;&lt;/a&gt;</source>
+        <translation>&lt;a href=&quot;https://anylink.pro&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;检查更新&lt;/span&gt;&lt;/a&gt;</translation>
     </message>
     <message>
-        <location filename="../src/plinfo.cpp" line="+200"/>
+        <location filename="../src/anylink.cpp" line="+200"/>
         <source>Couldn&apos;t open log file</source>
         <translation>未能打开日志文件</translation>
     </message>
@@ -353,7 +353,7 @@
     <message>
         <location line="+58"/>
         <source>This software can save passwords in the Keychain of the operating system to avoid plaintext passwords, but you should evaluate whether your usage scenarios allow saving passwords and avoid potential security risks.</source>
-        <translation>本软件具有可选的密码保存功能，其中密码将保存在操作系统的密钥串里。用户需评估自己的使用环境是否允许保存密码以及设备丢失可能带来的潜在风险。请务必前往本软件官网 &lt;a href=&quot;https://plinfo.pro&quot;&gt;https://plinfo.pro&lt;/a&gt; 下载和使用最新版本！</translation>
+        <translation>本软件具有可选的密码保存功能，其中密码将保存在操作系统的密钥串里。用户需评估自己的使用环境是否允许保存密码以及设备丢失可能带来的潜在风险。请务必前往本软件官网 &lt;a href=&quot;https://anylink.pro&quot;&gt;https://anylink.pro&lt;/a&gt; 下载和使用最新版本！</translation>
     </message>
 </context>
 <context>
@@ -740,7 +740,7 @@
     <message>
         <location filename="../src/main.cpp" line="+16"/>
         <source>The current version of the software has expired, please install the latest version!</source>
-        <translation>软件当前版本已过期，请前往本软件官网 &lt;a href=&quot;https://plinfo.pro&quot;&gt;https://plinfo.pro&lt;/a&gt; 下载和使用最新版本！</translation>
+        <translation>软件当前版本已过期，请前往本软件官网 &lt;a href=&quot;https://anylink.pro&quot;&gt;https://anylink.pro&lt;/a&gt; 下载和使用最新版本！</translation>
     </message>
 </context>
 <context>

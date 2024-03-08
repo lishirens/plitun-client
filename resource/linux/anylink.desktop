@@ -1,8 +1,8 @@
 [Desktop Entry]
 Type=Application
-Name=plinfo Secure Client
+Name=Plinfo Secure Client
 Comment=A VPN client that utilizes TLS and DTLS for secure session establishment
 Terminal=false
 Icon=/opt/plinfo/plinfo.png
-Exec=/opt/plinfo/bin/plinfo
+Exec=/opt/plinfo/bin/anylink
 StartupNotify=false
