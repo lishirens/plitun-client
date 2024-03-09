@@ -30,7 +30,7 @@ Controller.prototype.onInstallationFinished = function ()
 
     if (installer.isInstaller() && installer.status === QInstaller.Success) {
         if (systemInfo.kernelType === "linux") {
-            installer.executeDetached("@TargetDir@/bin/anylink");
+            installer.executeDetached("@TargetDir@/bin/plinfo");
         } else if (systemInfo.kernelType === "winnt") {
             installer.executeDetached("@TargetDir@/anylink.exe");
         } else if (systemInfo.kernelType === "darwin") {
