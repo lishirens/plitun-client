@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Plitun</class>
- <widget class="QWidget" name="Plitun">
+ <class>PliTun</class>
+ <widget class="QWidget" name="PliTun">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -550,14 +550,14 @@
          <item>
           <widget class="QCheckBox" name="checkBoxAutoLogin">
            <property name="text">
-            <string>Connect to the last used VPN when Plitun is started</string>
+            <string>Connect to the last used VPN when PliTun is started</string>
            </property>
           </widget>
          </item>
          <item>
           <widget class="QCheckBox" name="checkBoxMinimize">
            <property name="text">
-            <string>Minimize Plitun on VPN connect</string>
+            <string>Minimize PliTun on VPN connect</string>
            </property>
           </widget>
          </item>
@@ -651,7 +651,7 @@
            <item>
             <widget class="QLabel" name="labelLogo">
              <property name="text">
-              <string notr="true">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;h3 style=&quot; margin-top:14px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:large; font-weight:700; color:#888a85;&quot;&gt;Plitun SSL VPN&lt;/span&gt;&lt;/h3&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              <string notr="true">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;h3 style=&quot; margin-top:14px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:large; font-weight:700; color:#888a85;&quot;&gt;PliTun SSL VPN&lt;/span&gt;&lt;/h3&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
             </widget>
            </item>

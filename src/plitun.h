@@ -8,7 +8,7 @@
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
-class Plitun;
+class PliTun;
 }
 QT_END_NAMESPACE
 
@@ -19,15 +19,15 @@ class QSystemTrayIcon;
 class QMenu;
 class QComboBox;
 
-class Plitun : public QWidget
+class PliTun : public QWidget
 {
     Q_OBJECT
 
 public:
     enum { STATUS, CONFIG, CONNECT, DISCONNECT, RECONNECT, INTERFACE, ABORT, STAT };
 
-    Plitun(QWidget *parent = nullptr);
-    ~Plitun();
+    PliTun(QWidget *parent = nullptr);
+    ~PliTun();
 
     JsonRpcWebSocketClient *rpc = nullptr;
 
@@ -42,7 +42,7 @@ protected:
     void showEvent(QShowEvent *event) override;
 
 private:
-    Ui::Plitun *ui;
+    Ui::PliTun *ui;
     QSystemTrayIcon *trayIcon = nullptr;
     QMenu *trayIconMenu;
     QComboBox *iconComboBox;

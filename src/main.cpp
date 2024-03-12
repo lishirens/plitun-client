@@ -23,7 +23,7 @@ int main(int argc, char *argv[])
     qSetMessagePattern("%{type}:[%{file}:%{line}]  %{message}");
     //    qDebug() << QStyleFactory::keys();
     //    QApplication::setStyle("fusion");
-    QApplication::setApplicationName("Plitun");
+    QApplication::setApplicationName("PliTun");
     configLocation = QStandardPaths::writableLocation(QStandardPaths::AppConfigLocation);
     //    qDebug() << configLocation;
     tempLocation = QStandardPaths::writableLocation(QStandardPaths::TempLocation);
@@ -54,11 +54,11 @@ int main(int argc, char *argv[])
 
     //    outdateCheck();
 
-    Plitun w;
+    PliTun w;
     w.show();
 
     QApplication::setQuitOnLastWindowClosed(false);
-    QObject::connect(&app, &SingleApplication::instanceStarted, &w, &Plitun::showNormal);
+    QObject::connect(&app, &SingleApplication::instanceStarted, &w, &PliTun::showNormal);
 
     return app.exec();
 }

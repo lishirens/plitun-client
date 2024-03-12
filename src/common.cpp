@@ -2,7 +2,7 @@
 #include <QMessageBox>
 #include "configmanager.h"
 
-QString agentName = "Plitun SSL VPN";
+QString agentName = "PliTun SSL VPN";
 
 QString appVersion = "0.9.5";
 

@@ -14,9 +14,9 @@
 #include "macdockiconhandler.h"
 #endif
 
-Plitun::Plitun(QWidget *parent)
+PliTun::PliTun(QWidget *parent)
     : QWidget(parent)
-    , ui(new Ui::Plitun)
+    , ui(new Ui::PliTun)
     , m_vpnConnected(false)
 {
     ui->setupUi(this);
@@ -27,7 +27,7 @@ Plitun::Plitun(QWidget *parent)
     setWindowFlags(Qt::CustomizeWindowHint | Qt::WindowTitleHint | Qt::WindowMinimizeButtonHint
                    | Qt::WindowCloseButtonHint | Qt::WindowStaysOnTopHint);
 #endif
-    setWindowTitle(tr("Plitun SSL VPN") + " v" + appVersion);
+    setWindowTitle(tr("PliTun SSL VPN") + " v" + appVersion);
 
 #if defined(Q_OS_LINUX) || defined(Q_OS_WIN)
     loadStyleSheet(":/resource/style.qss");
@@ -82,12 +82,12 @@ Plitun::Plitun(QWidget *parent)
     // exit
 }
 
-Plitun::~Plitun()
+PliTun::~PliTun()
 {
     delete ui;
 }
 
-void Plitun::closeEvent(QCloseEvent *event)
+void PliTun::closeEvent(QCloseEvent *event)
 {
     if (m_vpnConnected) {
         hide();
@@ -100,7 +100,7 @@ void Plitun::closeEvent(QCloseEvent *event)
     }
 }
 
-void Plitun::showEvent(QShowEvent *event)
+void PliTun::showEvent(QShowEvent *event)
 {
     if (trayIcon == nullptr) {
         QTimer::singleShot(50, this, [this]() { afterShowOneTime(); });
@@ -108,7 +108,7 @@ void Plitun::showEvent(QShowEvent *event)
     event->accept();
 }
 
-void Plitun::center()
+void PliTun::center()
 {
     QRect screenGeometry = screen()->geometry();
     QRect windowGeometry = frameGeometry();
@@ -120,7 +120,7 @@ void Plitun::center()
     move(centerPoint);
 }
 
-void Plitun::loadStyleSheet(const QString &styleSheetFile)
+void PliTun::loadStyleSheet(const QString &styleSheetFile)
 
 {
     QFile file(styleSheetFile);
@@ -133,14 +133,14 @@ void Plitun::loadStyleSheet(const QString &styleSheetFile)
     }
 }
 
-void Plitun::createTrayActions()
+void PliTun::createTrayActions()
 {
     actionConnect = new QAction(tr("Connect Gateway"), this);
     // not lambda must have this
-    connect(actionConnect, &QAction::triggered, this, &Plitun::connectVPN);
+    connect(actionConnect, &QAction::triggered, this, &PliTun::connectVPN);
 
     actionDisconnect = new QAction(tr("Disconnect Gateway"), this);
-    connect(actionDisconnect, &QAction::triggered, this, &Plitun::disconnectVPN);
+    connect(actionDisconnect, &QAction::triggered, this, &PliTun::disconnectVPN);
 
     actionConfig = new QAction(tr("Show Panel"), this);
     connect(actionConfig, &QAction::triggered, this, [this]() {
@@ -152,7 +152,7 @@ void Plitun::createTrayActions()
     connect(actionQuit, &QAction::triggered, qApp, &QApplication::quit, Qt::QueuedConnection);
 }
 
-void Plitun::createTrayIcon()
+void PliTun::createTrayIcon()
 {
     trayIconMenu = new QMenu(this);
     trayIconMenu->addAction(actionConnect);
@@ -185,7 +185,7 @@ void Plitun::createTrayIcon()
 #endif
 }
 
-void Plitun::initConfig()
+void PliTun::initConfig()
 {
     ui->checkBoxAutoLogin->setChecked(configManager->config["autoLogin"].toBool());
     ui->checkBoxMinimize->setChecked(configManager->config["minimize"].toBool());
@@ -222,7 +222,7 @@ void Plitun::initConfig()
     });
 }
 
-void Plitun::afterShowOneTime()
+void PliTun::afterShowOneTime()
 {
     createTrayActions();
     createTrayIcon();
@@ -243,7 +243,7 @@ void Plitun::afterShowOneTime()
         }
     });
 
-    connect(this, &Plitun::vpnConnected, this, [this]() {
+    connect(this, &PliTun::vpnConnected, this, [this]() {
         getVPNStatus();
         m_vpnConnected = true;
         activeDisconnect = false;
@@ -265,7 +265,7 @@ void Plitun::afterShowOneTime()
         timer.start(60 * 1000);
     });
 
-    connect(this, &Plitun::vpnClosed, [this]() {
+    connect(this, &PliTun::vpnClosed, [this]() {
         m_vpnConnected = false;
         trayIcon->setIcon(iconNotConnected);
         trayIcon->setToolTip("");
@@ -322,7 +322,7 @@ void Plitun::afterShowOneTime()
     rpc->connectToServer(QUrl("ws://127.0.0.1:6210/rpc"));
 }
 
-void Plitun::resetVPNStatus()
+void PliTun::resetVPNStatus()
 {
     ui->labelChannelType->clear();
     ui->labelTlsCipherSuite->clear();
@@ -343,7 +343,7 @@ void Plitun::resetVPNStatus()
 /**
  * called by JsonRpcWebSocketClient::connected and every time setting changed
  */
-void Plitun::configVPN()
+void PliTun::configVPN()
 {
     if (rpc->isConnected()) {
         QJsonObject args{{"log_level", ui->checkBoxDebug->isChecked() ? "Debug" : "Info"},
@@ -359,7 +359,7 @@ void Plitun::configVPN()
     }
 }
 
-void Plitun::connectVPN(bool reconnect)
+void PliTun::connectVPN(bool reconnect)
 {
     if (rpc->isConnected()) {
         // profile may be modified, and may not emit currentTextChanged signal
@@ -407,7 +407,7 @@ void Plitun::connectVPN(bool reconnect)
     }
 }
 
-void Plitun::disconnectVPN()
+void PliTun::disconnectVPN()
 {
     if (rpc->isConnected()) {
         ui->progressBar->start();
@@ -417,7 +417,7 @@ void Plitun::disconnectVPN()
     }
 }
 
-void Plitun::getVPNStatus()
+void PliTun::getVPNStatus()
 {
     rpc->callAsync("status", STATUS, [this](const QJsonValue &result) {
         const QJsonObject &status = result.toObject();
@@ -442,7 +442,7 @@ void Plitun::getVPNStatus()
     });
 }
 
-void Plitun::on_buttonConnect_clicked()
+void PliTun::on_buttonConnect_clicked()
 {
     if (rpc->isConnected()) {
         if (m_vpnConnected) {
@@ -453,12 +453,12 @@ void Plitun::on_buttonConnect_clicked()
     }
 }
 
-void Plitun::on_buttonProfile_clicked()
+void PliTun::on_buttonProfile_clicked()
 {
     profileManager->exec();
 }
 
-void Plitun::on_buttonViewLog_clicked()
+void PliTun::on_buttonViewLog_clicked()
 {
     QString filePath = tempLocation + "/vpnagent.log";
     QFile loadFile(filePath);
@@ -490,12 +490,12 @@ void Plitun::on_buttonViewLog_clicked()
     textBrowser.exec();
 }
 
-void Plitun::on_buttonDetails_clicked()
+void PliTun::on_buttonDetails_clicked()
 {
     detailDialog->exec();
 }
 
-void Plitun::on_buttonSecurityTips_clicked()
+void PliTun::on_buttonSecurityTips_clicked()
 {
     QString readme = "README.md";
     if (QLocale::system().name() == "zh_CN") {
