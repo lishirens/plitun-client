@@ -30,11 +30,11 @@ Controller.prototype.onInstallationFinished = function ()
 
     if (installer.isInstaller() && installer.status === QInstaller.Success) {
         if (systemInfo.kernelType === "linux") {
-            installer.executeDetached("@TargetDir@/bin/plinfo");
+            installer.executeDetached("@TargetDir@/bin/plitun");
         } else if (systemInfo.kernelType === "winnt") {
-            installer.executeDetached("@TargetDir@/anylink.exe");
+            installer.executeDetached("@TargetDir@/plitun.exe");
         } else if (systemInfo.kernelType === "darwin") {
-            installer.executeDetached("@TargetDir@/Plinfo.app/Contents/MacOS/Plinfo");
+            installer.executeDetached("@TargetDir@/Plitun.app/Contents/MacOS/Plitun");
         }
 
        // if (installer.value("UILanguage") === "zh_CN") {

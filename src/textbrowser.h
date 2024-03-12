@@ -12,11 +12,12 @@ class TextBrowser : public QDialog
     Q_OBJECT
 
 public:
-    explicit TextBrowser(const QString &title,QWidget *parent = nullptr);
+    explicit TextBrowser(const QString &title, QWidget *parent = nullptr);
     ~TextBrowser();
 
     void setText(const QString &text);
     void setMarkdown(const QString &markdown);
+
 private:
     Ui::TextBrowser *ui;
 };

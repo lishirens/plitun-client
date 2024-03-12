@@ -1,10 +1,10 @@
 #ifndef PROFILEMANAGER_H
 #define PROFILEMANAGER_H
 
-#include "common.h"
-#include "keychainclass.h"
 #include <QDialog>
 #include <QJsonObject>
+#include "common.h"
+#include "keychainclass.h"
 
 namespace Ui {
 class ProfileManager;

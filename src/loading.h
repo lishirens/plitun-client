@@ -1,14 +1,19 @@
 ﻿#ifndef LOADING_H
 #define LOADING_H
 
-#include <QWidget>
+#include <QMap>
 #include <QPainter>
 #include <QTimer>
-#include <QMap>
+#include <QWidget>
 
-struct Location {
+struct Location
+{
 public:
-    explicit Location(float _x, float _y) {x = _x; y = _y;}
+    explicit Location(float _x, float _y)
+    {
+        x = _x;
+        y = _y;
+    }
     float x;
     float y;
 };

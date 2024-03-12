@@ -1,8 +1,8 @@
 #include "common.h"
-#include "configmanager.h"
 #include <QMessageBox>
+#include "configmanager.h"
 
-QString agentName = "Plinfo Secure Client";
+QString agentName = "Plitun SSL VPN";
 
 QString appVersion = "0.9.5";
 
@@ -19,7 +19,11 @@ void error(const QString &message, QWidget *parent)
 
 void info(const QString &message, QWidget *parent)
 {
-    QMessageBox msgBox(QMessageBox::Information, QObject::tr("Tips"), message, QMessageBox::Ok, parent);
+    QMessageBox msgBox(QMessageBox::Information,
+                       QObject::tr("Tips"),
+                       message,
+                       QMessageBox::Ok,
+                       parent);
     msgBox.setButtonText(QMessageBox::Ok, QObject::tr("OK"));
     msgBox.exec();
 }

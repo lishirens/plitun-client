@@ -6,9 +6,7 @@
 class QWidget;
 class ConfigManager;
 
-enum SaveFormat {
-    Json, Binary
-};
+enum SaveFormat { Json, Binary };
 
 extern QString agentName;
 
