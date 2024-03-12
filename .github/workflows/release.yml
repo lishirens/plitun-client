@@ -12,7 +12,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        build: [linux, linux-latest, windows, windows-arm64, macos, macos-arm64]
+        build: [linux, linux-latest, windows, macos, macos-arm64]
         include:
         - build: linux-latest
           os: ubuntu-22.04
@@ -35,13 +35,6 @@ jobs:
           qt-modules: 'qtwebsockets'
           qt-tools: 'tools_qtcreator'
           installer-name: plitun-windows10-amd64.exe
-        - build: windows-arm64
-          os: windows-2019
-          qt: 6.6.2
-          arch: win64_msvc2019_arm64
-          qt-modules: 'qtwebsockets'
-          qt-tools: 'tools_qtcreator'
-          installer-name: plitun-windows10-arm64.exe
         - build: macos
           os: macos-12
           qt: 6.6.2
@@ -66,8 +59,6 @@ jobs:
           echo "ARCHIVE_NAME=plitun-linux-amd64.tar.gz" >> $GITHUB_ENV
         elif [ "${{ matrix.build }}" = "windows" ]; then
           echo "ARCHIVE_NAME=plitun-windows10-amd64.zip" >> $GITHUB_ENV
-        elif [ "${{ matrix.build }}" = "windows-arm64" ]; then
-          echo "ARCHIVE_NAME=plitun-windows10-arm64.zip" >> $GITHUB_ENV
         elif [ "${{ matrix.build }}" = "macos" ]; then
           echo "ARCHIVE_NAME=plitun-macOS-amd64.dmg" >> $GITHUB_ENV
         elif [ "${{ matrix.build }}" = "macos-arm64" ]; then
@@ -82,8 +73,6 @@ jobs:
           echo "ARCHIVE_NAME=plitun-${{ github.ref_name }}-linux-amd64.tar.gz" >> $GITHUB_ENV
         elif [ "${{ matrix.build }}" = "windows" ]; then
           echo "ARCHIVE_NAME=plitun-${{ github.ref_name }}-windows10-amd64.zip" >> $GITHUB_ENV
-        elif [ "${{ matrix.build }}" = "windows-arm64" ]; then
-          echo "ARCHIVE_NAME=plitun-${{ github.ref_name }}-windows10-arm64.zip" >> $GITHUB_ENV
         elif [ "${{ matrix.build }}" = "macos" ]; then
           echo "ARCHIVE_NAME=plitun-${{ github.ref_name }}-macOS-amd64.dmg" >> $GITHUB_ENV
         elif [ "${{ matrix.build }}" = "macos-arm64" ]; then
@@ -104,14 +93,10 @@ jobs:
           libxcb-screensaver0 libxcb-shape0 libxcb-shm0 libxcb-sync1 libxcb-util1 \
           libxkbcommon-x11-dev extra-cmake-modules fcitx-libs-dev
         fi
+    # https://github.com/ilammy/msvc-dev-cmd
     - if: matrix.build == 'windows'
       name: Setup msvc
       uses: ilammy/msvc-dev-cmd@v1
-    - if: matrix.build == 'windows-arm64'
-      name: Setup msvc
-      uses: ilammy/msvc-dev-cmd@v1
-      with:
-          arch: amd64_arm64 # https://github.com/ilammy/msvc-dev-cmd
     - name: Install Qt
       # v3，aqtversion 为 2.11，不支持将工具添加到 $PATH，https://github.com/jurplel/install-qt-action
       uses: jurplel/install-qt-action@v3
@@ -141,7 +126,7 @@ jobs:
           cmake -DENABLE_QT5=Off -DENABLE_QT6=On .
           make -j $(nproc)
           cd ..
-        elif [ "${{ matrix.build }}" = "windows" -o "${{ matrix.build }}" = "windows-arm64" ]; then
+        elif [ "${{ matrix.build }}" = "windows" ]; then
           rm "C:\Program Files\Git\usr\bin\link.exe"
           qmake
           "${IQTA_TOOLS}/QtCreator/bin/jom/jom.exe" -j $(nproc) -f Makefile.Release
@@ -189,19 +174,6 @@ jobs:
           # https://bugreports.qt.io/browse/QTIFW-2295
           editbin /subsystem:windows ${{ matrix.installer-name }}
           7z a -tzip -r "${{ github.workspace }}"/archive/${{ env.ARCHIVE_NAME }} ${{ matrix.installer-name }}
-        elif [ "${{ matrix.build }}" = "windows-arm64" ]; then
-          windeployqt out/bin/plitun.exe --no-translations --no-system-d3d-compiler --no-opengl-sw --no-svg
-          curl -k -L -O https://github.com/tlslink/sslcon/releases/download/continuous/sslcon-windows10-arm64.7z
-          7z x -y sslcon-*.7z
-          cp vpnagent.exe sslcon.exe out/bin
-          7z a installer/packages/root/data/plitun.7z ./out/bin/*
-          cd installer
-          curl -k -O -L https://mirrors.ustc.edu.cn/qtproject/archive/qt-installer-framework/4.5.2/QtInstallerFramework-windows-x64-4.5.2.exe
-          ./QtInstallerFramework-windows-x64-4.5.2.exe --al --da -c -t `pwd`/ifw in
-          ./ifw/bin/binarycreator --offline-only -c config/config.xml -p packages ${{ matrix.installer-name }}
-          # https://bugreports.qt.io/browse/QTIFW-2295
-          editbin /subsystem:windows ${{ matrix.installer-name }}
-          7z a -tzip -r "${{ github.workspace }}"/archive/${{ env.ARCHIVE_NAME }} ${{ matrix.installer-name }}
         elif [ "${{ matrix.build }}" = "macos" ]; then
           cd installer
           curl -k -O -L https://mirrors.ustc.edu.cn/qtproject/archive/qt-installer-framework/4.6.1/QtInstallerFramework-macOS-x64-4.6.1.dmg
@@ -213,7 +185,7 @@ jobs:
           cp vpnagent sslcon Plitun.app/Contents/MacOS
           macdeployqt Plitun.app
           mkdir -p ../../installer/packages/root/data
-          ../../installer/ifw/bin/archivegen ../../installer/packages/root/data/plitun.7z ./Plitun.app
+          ../../installer/ifw/bin/archivegen ../../installer/packages/root/data/plitun.7z ./plitun.app
           cd ../../installer
           ./ifw/bin/binarycreator --offline-only -c config/config.xml -p packages ${{ matrix.installer-name }}
           hdiutil create -fs HFS+ -srcfolder ${{ matrix.installer-name }}.app -format UDZO "${{ github.workspace }}"/archive/${{ env.ARCHIVE_NAME }}
@@ -228,7 +200,7 @@ jobs:
           cp vpnagent sslcon Plitun.app/Contents/MacOS
           macdeployqt Plitun.app
           mkdir -p ../../installer/packages/root/data
-          ../../installer/ifw/bin/archivegen ../../installer/packages/root/data/plitun.7z ./Plitun.app
+          ../../installer/ifw/bin/archivegen ../../installer/packages/root/data/plitun.7z ./plitun.app
           cd ../../installer
           ./ifw/bin/binarycreator --offline-only -c config/config.xml -p packages ${{ matrix.installer-name }}
           hdiutil create -fs HFS+ -srcfolder ${{ matrix.installer-name }}.app -format UDZO "${{ github.workspace }}"/archive/${{ env.ARCHIVE_NAME }}
