@@ -42,7 +42,7 @@ int main(int argc, char *argv[])
         if(configManager->config["local"].toBool()) {
 //            qDebug() << QLocale::system().name();
             // embedded in qrc
-            if(myTranslator.load(QLocale(), QLatin1String("anylink"), QLatin1String("_"), QLatin1String(":/i18n"))) {
+            if(myTranslator.load(QLocale(), QLatin1String("plitun"), QLatin1String("_"), QLatin1String(":/i18n"))) {
                 app.installTranslator(&myTranslator);
             }
         }
