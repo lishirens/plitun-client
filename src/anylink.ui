@@ -688,7 +688,7 @@
            <item>
             <widget class="QLabel" name="label_16">
              <property name="text">
-              <string notr="true">&amp;copy; 2023 &lt;a href=&quot;https://anylink.pro&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;https://anylink.pro&lt;/span&gt;&lt;/a&gt;</string>
+              <string notr="true">&amp;copy; 2023 &lt;a href=&quot;https://plitun.com&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;https://plitun.com&lt;/span&gt;&lt;/a&gt;</string>
              </property>
              <property name="openExternalLinks">
               <bool>true</bool>
@@ -741,7 +741,7 @@
          <item>
           <widget class="QLabel" name="labelHelp">
            <property name="text">
-            <string>&lt;a href=&quot;https://github.com/tlslink/anylink-client/issues&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;Getting Help&lt;/span&gt;&lt;/a&gt;</string>
+            <string>&lt;a href=&quot;https://plitun.com&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;Getting Help&lt;/span&gt;&lt;/a&gt;</string>
            </property>
            <property name="textFormat">
             <enum>Qt::AutoText</enum>
@@ -782,7 +782,7 @@
          <item>
           <widget class="QLabel" name="labelUpdate">
            <property name="text">
-            <string>&lt;a href=&quot;https://github.com/tlslink/anylink-client/releases&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;Check Updates&lt;/span&gt;&lt;/a&gt;</string>
+            <string>&lt;a href=&quot;https://plitun.com&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;Check Updates&lt;/span&gt;&lt;/a&gt;</string>
            </property>
            <property name="openExternalLinks">
             <bool>true</bool>

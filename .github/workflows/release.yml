@@ -60,23 +60,23 @@ jobs:
         elif [ "${{ matrix.build }}" = "windows" ]; then
           echo "ARCHIVE_NAME=plitun-windows10-amd64.zip" >> $GITHUB_ENV
         elif [ "${{ matrix.build }}" = "macos" ]; then
-          echo "ARCHIVE_NAME=anylink-macOS-amd64.dmg" >> $GITHUB_ENV
+          echo "ARCHIVE_NAME=plitun-macOS-amd64.dmg" >> $GITHUB_ENV
         elif [ "${{ matrix.build }}" = "macos-arm64" ]; then
-          echo "ARCHIVE_NAME=anylink-macOS-arm64.dmg" >> $GITHUB_ENV
+          echo "ARCHIVE_NAME=plitun-macOS-arm64.dmg" >> $GITHUB_ENV
         fi
     - if: startsWith(github.ref, 'refs/tags/')
       shell: bash
       run: |
         if [ "${{ matrix.build }}" = "linux-latest" ]; then
-          echo "ARCHIVE_NAME=anylink-${{ github.ref_name }}-linux_openssl3-amd64.tar.gz" >> $GITHUB_ENV
+          echo "ARCHIVE_NAME=plitun-${{ github.ref_name }}-linux_openssl3-amd64.tar.gz" >> $GITHUB_ENV
         elif [ "${{ matrix.build }}" = "linux" ]; then
-          echo "ARCHIVE_NAME=anylink-${{ github.ref_name }}-linux-amd64.tar.gz" >> $GITHUB_ENV
+          echo "ARCHIVE_NAME=plitun-${{ github.ref_name }}-linux-amd64.tar.gz" >> $GITHUB_ENV
         elif [ "${{ matrix.build }}" = "windows" ]; then
-          echo "ARCHIVE_NAME=anylink-${{ github.ref_name }}-windows10-amd64.zip" >> $GITHUB_ENV
+          echo "ARCHIVE_NAME=plitun-${{ github.ref_name }}-windows10-amd64.zip" >> $GITHUB_ENV
         elif [ "${{ matrix.build }}" = "macos" ]; then
-          echo "ARCHIVE_NAME=anylink-${{ github.ref_name }}-macOS-amd64.dmg" >> $GITHUB_ENV
+          echo "ARCHIVE_NAME=plitun-${{ github.ref_name }}-macOS-amd64.dmg" >> $GITHUB_ENV
         elif [ "${{ matrix.build }}" = "macos-arm64" ]; then
-          echo "ARCHIVE_NAME=anylink-${{ github.ref_name }}-macOS-arm64.dmg" >> $GITHUB_ENV
+          echo "ARCHIVE_NAME=plitun-${{ github.ref_name }}-macOS-arm64.dmg" >> $GITHUB_ENV
         fi
     - name: Install dependencies
       shell: bash
@@ -153,7 +153,7 @@ jobs:
           wget -c -nv https://github.com/tlslink/sslcon/releases/download/continuous/sslcon-linux-amd64.tar.gz
           tar -zxvf sslcon-*.tar.gz
           cp vpnagent sslcon out/opt/plitun/bin
-          7z a installer/packages/root/data/anylink.7z ./out/opt/plitun/*
+          7z a installer/packages/root/data/plitun.7z ./out/opt/plitun/*
           cd installer
           wget -c -nv https://mirrors.ustc.edu.cn/qtproject/official_releases/qt-installer-framework/4.7.0/QtInstallerFramework-linux-x64-4.7.0.run
           chmod +x ./*.run
@@ -166,7 +166,7 @@ jobs:
           curl -k -L -O https://github.com/tlslink/sslcon/releases/download/continuous/sslcon-windows10-amd64.7z
           7z x -y sslcon-*.7z
           cp vpnagent.exe sslcon.exe out/bin
-          7z a installer/packages/root/data/anylink.7z ./out/bin/*
+          7z a installer/packages/root/data/plitun.7z ./out/bin/*
           cd installer
           curl -k -O -L https://mirrors.ustc.edu.cn/qtproject/archive/qt-installer-framework/4.5.2/QtInstallerFramework-windows-x64-4.5.2.exe
           ./QtInstallerFramework-windows-x64-4.5.2.exe --al --da -c -t `pwd`/ifw in
@@ -185,7 +185,7 @@ jobs:
           cp vpnagent sslcon PliTun.app/Contents/MacOS
           macdeployqt PliTun.app
           mkdir -p ../../installer/packages/root/data
-          ../../installer/ifw/bin/archivegen ../../installer/packages/root/data/anylink.7z ./PliTun.app
+          ../../installer/ifw/bin/archivegen ../../installer/packages/root/data/plitun.7z ./PliTun.app
           cd ../../installer
           ./ifw/bin/binarycreator --offline-only -c config/config.xml -p packages ${{ matrix.installer-name }}
           hdiutil create -fs HFS+ -srcfolder ${{ matrix.installer-name }}.app -format UDZO "${{ github.workspace }}"/archive/${{ env.ARCHIVE_NAME }}
@@ -200,7 +200,7 @@ jobs:
           cp vpnagent sslcon PliTun.app/Contents/MacOS
           macdeployqt PliTun.app
           mkdir -p ../../installer/packages/root/data
-          ../../installer/ifw/bin/archivegen ../../installer/packages/root/data/anylink.7z ./PliTun.app
+          ../../installer/ifw/bin/archivegen ../../installer/packages/root/data/plitun.7z ./PliTun.app
           cd ../../installer
           ./ifw/bin/binarycreator --offline-only -c config/config.xml -p packages ${{ matrix.installer-name }}
           hdiutil create -fs HFS+ -srcfolder ${{ matrix.installer-name }}.app -format UDZO "${{ github.workspace }}"/archive/${{ env.ARCHIVE_NAME }}
@@ -219,7 +219,7 @@ jobs:
       uses: softprops/action-gh-release@v1
       with:
         name: Release build (${{ github.ref_name }})
-        body: 'See [README](https://github.com/Yansre/anylink-client) for more details.'
+        body: 'See [README](https://github.com/Yansre/plitun-client) for more details.'
         files: archive/${{ env.ARCHIVE_NAME }}
         generate_release_notes: true
     - if: startsWith(github.ref, 'refs/tags/') && (matrix.build != 'windows')
