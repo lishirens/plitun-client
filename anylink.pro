@@ -47,7 +47,7 @@ VERSION = 1.1.0
 
 macx {
     # https://doc.qt.io/qt-6/qmake-variable-reference.html#qmake-info-plist The value of QMAKE_BUNDLE should not be set directly by the project.
-    QMAKE_TARGET_BUNDLE_PREFIX = pro.anylink
+    QMAKE_TARGET_BUNDLE_PREFIX = pro.plitun
 
     HEADERS += src/macdockiconhandler.h
     SOURCES += src/macdockiconhandler.mm
