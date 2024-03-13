@@ -41,7 +41,7 @@ void KeyChainClass::writeKey(const QString &key, const QString &value)
     });
 
     writeCredentialJob->setTextData(value);
-    writeCredentialJob->start();S
+    writeCredentialJob->start();
 }
 
 void KeyChainClass::deleteKey(const QString &key)
