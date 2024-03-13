@@ -148,7 +148,7 @@ jobs:
           # probonopd
           wget -c -nv "https://github.com/probonopd/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-x86_64.AppImage"
           chmod a+x linuxdeployqt-continuous-x86_64.AppImage
-          ./linuxdeployqt-continuous-x86_64.AppImage out/opt/plitun/bin/plitun -extra-plugins=platformthemes/libqgtk3.so -no-copy-copyright-files -no-translations -unsupported-allow-new-glibc
+          ./linuxdeployqt-continuous-x86_64.AppImage out/opt/plitun/bin/anylink -extra-plugins=platformthemes/libqgtk3.so -no-copy-copyright-files -no-translations -unsupported-allow-new-glibc
           cp fcitx-qt5-master/qt6/platforminputcontext/libfcitxplatforminputcontextplugin-qt6.so out/opt/plitun/plugins/platforminputcontexts/
           wget -c -nv https://github.com/tlslink/sslcon/releases/download/continuous/sslcon-linux-amd64.tar.gz
           tar -zxvf sslcon-*.tar.gz
