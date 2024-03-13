@@ -1,10 +1,8 @@
 ﻿#include "loading.h"
-#include <QDebug>
 #include "qmath.h"
+#include <QDebug>
 
-Loading::Loading(QWidget *parent)
-    : QWidget(parent)
-    , _interval(90)
+Loading::Loading(QWidget *parent) : QWidget(parent), _interval(90)
 {
     //设置背景透明
     // this->setWindowFlags(Qt::FramelessWindowHint | Qt::WindowSystemMenuHint |
@@ -41,7 +39,7 @@ void Loading::start()
 
 void Loading::stop()
 {
-    if (m_started) {
+    if(m_started) {
         m_started = false;
         timer.stop();
     }
@@ -75,7 +73,7 @@ void Loading::resizeEvent(QResizeEvent *event)
 void Loading::paintEvent(QPaintEvent *event)
 {
     Q_UNUSED(event)
-    if (m_started) {
+    if(m_started) {
         QPainter painter(this);
         painter.setRenderHint(QPainter::Antialiasing);
 
@@ -97,23 +95,22 @@ void Loading::calculate()
     _centerDistance = half - _maxDiameter / 2 - 1;
 
     float gap = (_maxDiameter - _minDiameter) / (_count - 1) / 2;
-    float angleGap = (float) 360 / _count;
+    float angleGap = (float)360 / _count;
 
     locationList.clear();
     radiiList.clear();
 
-    for (int i = 0; i < _count; i++) {
-        radiiList << _maxDiameter / 2 - i * gap;
+    for(int i = 0; i < _count; i++) {
+        radiiList << _maxDiameter / 2 - i *gap;
         float radian = qDegreesToRadians(-angleGap * i);
-        locationList.append(
-            Location(half + _centerDistance * qCos(radian), half - _centerDistance * qSin(radian)));
+        locationList.append(Location(half + _centerDistance * qCos(radian), half - _centerDistance * qSin(radian)));
     }
 }
 
 //绘制圆点
 void Loading::paintDot(QPainter &painter)
 {
-    for (int i = 0; i < _count; i++) {
+    for(int i = 0; i < _count; i++) {
         painter.setPen(_dotColor);
         //半径
         float radii = radiiList.at((_index + _count - i) % _count);

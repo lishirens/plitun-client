@@ -1,6 +1,6 @@
 [Desktop Entry]
 Type=Application
-Name=Plitun SSL VPN
+Name=PliTun SSL VPN
 Comment=A VPN client that utilizes TLS and DTLS for secure session establishment
 Terminal=false
 Icon=/opt/plitun/plitun.png

@@ -9,24 +9,23 @@ namespace Ui {
 class DetailDialog;
 }
 
-class PliTun;
+class AnyLink;
 class DetailDialog : public QDialog
 {
     Q_OBJECT
 
 public:
-    explicit DetailDialog(PliTun *parent);
+    explicit DetailDialog(AnyLink *parent);
     ~DetailDialog();
 
     void setRoutes(const QJsonArray &excludes, const QJsonArray &includes);
     void clear();
-
 private:
     Ui::DetailDialog *ui;
     QTimer timer;
-    PliTun *plitun;
+    AnyLink *anylink;
 
-    QString format(double bytes); // typedef quint64 qulonglong;
+    QString format(double bytes);  // typedef quint64 qulonglong;
     // QWidget interface
 protected:
     void showEvent(QShowEvent *event) override;

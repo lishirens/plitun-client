@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Installer>
-    <Name>Plitun SSL VPN</Name>
-    <Version>0.9.5</Version>
-    <Title>Plitun SSL VPN</Title>
+    <Name>PliTun SSL VPN</Name>
+    <Version>1.1.0</Version>
+    <Title>PliTun SSL VPN</Title>
     <Publisher>https://plitun.com</Publisher>
     <ProductUrl>https://plitun.com</ProductUrl>
     <InstallerWindowIcon>plitun64.png</InstallerWindowIcon>
     <InstallerApplicationIcon>plitun</InstallerApplicationIcon>
-    <StartMenuDir>Plitun SSL VPN</StartMenuDir>
+    <StartMenuDir>PliTun SSL VPN</StartMenuDir>
     <TargetDir>@ApplicationsDir@/</TargetDir>
     <RemoveTargetDir>true</RemoveTargetDir>
     <WizardShowPageList>false</WizardShowPageList>

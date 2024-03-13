@@ -1,21 +1,20 @@
 #include "profilemanager.h"
-#include <QCborMap>
-#include <QCborValue>
+#include "ui_profilemanager.h"
 #include <QFile>
-#include <QItemSelectionModel>
 #include <QJsonDocument>
+#include <QCborValue>
+#include <QCborMap>
+#include <QStringListModel>
 #include <QListView>
 #include <QModelIndex>
 #include <QPushButton>
-#include <QRegularExpression>
+#include <QItemSelectionModel>
 #include <QRegularExpressionValidator>
-#include <QStringListModel>
-#include "ui_profilemanager.h"
+#include <QRegularExpression>
 
-ProfileManager::ProfileManager(QWidget *parent)
-    : QDialog(parent)
-    , model(new QStringListModel())
-    , ui(new Ui::ProfileManager)
+ProfileManager::ProfileManager(QWidget *parent) :
+    QDialog(parent),
+    model(new QStringListModel()), ui(new Ui::ProfileManager)
 {
     ui->setupUi(this);
     ui->listProfile->setModel(model);
@@ -49,13 +48,14 @@ ProfileManager::~ProfileManager()
 
 bool ProfileManager::loadProfile(SaveFormat saveFormat)
 {
-    QFile loadFile(saveFormat == Json ? configLocation + "/profile.json"
-                                      : configLocation + "/profile.dat");
+    QFile loadFile(saveFormat == Json
+                   ? configLocation + "/profile.json"
+                   : configLocation + "/profile.dat");
 
     // In WriteOnly or ReadWrite mode, if the relevant file does not already exist,
     // this function will try to create a new file before opening it.
     // but the dir must be already exist!
-    if (!loadFile.open(QIODevice::ReadWrite)) {
+    if(!loadFile.open(QIODevice::ReadWrite)) {
         error(tr("Couldn't open profile file"), parentWidget());
         return false;
     }
@@ -63,10 +63,10 @@ bool ProfileManager::loadProfile(SaveFormat saveFormat)
     QByteArray data = loadFile.readAll();
     QJsonDocument loadDoc;
 
-    if (data.length()) {
+    if(data.length()) {
         loadDoc = (saveFormat == Json
-                       ? QJsonDocument::fromJson(data)
-                       : QJsonDocument(QCborValue::fromCbor(data).toMap().toJsonObject()));
+                   ? QJsonDocument::fromJson(data)
+                   : QJsonDocument(QCborValue::fromCbor(data).toMap().toJsonObject()));
         // Returns an empty object if the document contains an array
         profiles = loadDoc.object();
 
@@ -77,25 +77,27 @@ bool ProfileManager::loadProfile(SaveFormat saveFormat)
 
 void ProfileManager::saveProfile(SaveFormat saveFormat)
 {
-    if (m_modified) {
-        QFile saveFile(saveFormat == Json ? configLocation + "/profile.json"
-                                          : configLocation + "/profile.dat");
+    if(m_modified) {
+        QFile saveFile(saveFormat == Json
+                       ? configLocation + "/profile.json"
+                       : configLocation + "/profile.dat");
 
-        if (!saveFile.open(QIODevice::WriteOnly)) {
+        if(!saveFile.open(QIODevice::WriteOnly)) {
             error(tr("Couldn't open profile file"), parentWidget());
             return;
         }
 
         writeKeys();
         QJsonObject saveProfiles = profiles;
-        for (auto it = saveProfiles.begin(); it != saveProfiles.end(); it++) {
+        for(auto it = saveProfiles.begin(); it != saveProfiles.end(); it++) {
             const QString key = it.key();
             QJsonObject value = it.value().toObject();
             value.remove("password");
             saveProfiles.insert(key, value);
         }
-        saveFile.write(saveFormat == Json ? QJsonDocument(saveProfiles).toJson()
-                                          : QCborValue::fromJsonValue(saveProfiles).toCbor());
+        saveFile.write(saveFormat == Json
+                       ? QJsonDocument(saveProfiles).toJson()
+                       : QCborValue::fromJsonValue(saveProfiles).toCbor());
     }
 }
 
@@ -137,22 +139,21 @@ void ProfileManager::afterShowOneTime()
         const QString name = ui->lineEditName->text().trimmed();
         const QString host = ui->lineEditHost->text().trimmed();
         const QString username = ui->lineEditUsername->text().trimmed();
-        if (name.isEmpty() || host.isEmpty() || username.isEmpty()) {
+        if(name.isEmpty() || host.isEmpty() || username.isEmpty()) {
             return;
         }
         const QString password = ui->lineEditPassword->text().trimmed();
         if (profiles.isEmpty()) {
-            info(tr("This software can save passwords in the Keychain of the operating system to "
-                    "avoid plaintext passwords, but you should evaluate whether your usage "
-                    "scenarios allow saving passwords and avoid potential security risks."),
-                 this);
+            info(tr("This software can save passwords in the Keychain of the operating system to avoid plaintext passwords, but you should evaluate whether your usage scenarios allow saving passwords and avoid potential security risks."),this);
         }
 
-        QJsonObject newProfile{{"host", host},
-                               {"username", username},
-                               {"password", password},
-                               {"group", ui->lineEditGroup->text().trimmed()},
-                               {"secret", ui->lineEditSecretkey->text().trimmed()}};
+        QJsonObject newProfile {
+            { "host", host },
+            { "username", username },
+            { "password", password },
+            { "group", ui->lineEditGroup->text().trimmed() },
+            { "secret", ui->lineEditSecretkey->text().trimmed() }
+        };
         profiles.insert(name, newProfile);
         updateModel();
         ui->listProfile->setCurrentIndex(model->index(profiles.keys().indexOf(name)));
@@ -167,7 +168,7 @@ void ProfileManager::afterShowOneTime()
         const QString name = ui->lineEditName->text();
         profiles.remove(name);
         updateModel();
-        if (profiles.size()) {
+        if(profiles.size()) {
             ui->listProfile->setCurrentIndex(model->index(0));
         } else {
             resetForm();
@@ -199,10 +200,10 @@ void ProfileManager::resetForm()
 
 void ProfileManager::readKeys()
 {
-    for (auto it = profiles.begin(); it != profiles.end(); it++) {
+    for(auto it = profiles.begin(); it != profiles.end(); it++) {
         const QString key = it.key();
         keyChain.readKey(key);
-        //        qDebug() << "readKey" << key;
+//        qDebug() << "readKey" << key;
     }
 }
 

@@ -1,9 +1,9 @@
 #ifndef CONFIGMANAGER_H
 #define CONFIGMANAGER_H
 
-#include <QJsonObject>
-#include <QObject>
 #include "common.h"
+#include <QObject>
+#include <QJsonObject>
 
 class ConfigManager : public QObject
 {

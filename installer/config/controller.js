@@ -34,7 +34,7 @@ Controller.prototype.onInstallationFinished = function ()
         } else if (systemInfo.kernelType === "winnt") {
             installer.executeDetached("@TargetDir@/plitun.exe");
         } else if (systemInfo.kernelType === "darwin") {
-            installer.executeDetached("@TargetDir@/Plitun.app/Contents/MacOS/Plitun");
+            installer.executeDetached("@TargetDir@/AnyLink.app/Contents/MacOS/AnyLink");
         }
 
        // if (installer.value("UILanguage") === "zh_CN") {
@@ -48,7 +48,7 @@ Controller.prototype.onInstallationFinished = function ()
 //{
 //    try {
 //        if (installer.isUninstaller()) {
-//            QDesktopServices.openUrl("https://plitun.com");
+//            QDesktopServices.openUrl("https://plitun.pro");
 //        }
 //    } catch(e) {
 //        console.log(e);

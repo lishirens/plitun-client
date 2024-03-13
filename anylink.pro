@@ -1,7 +1,7 @@
 QT       += core gui websockets widgets
 
 CONFIG += c++14
-TRANSLATIONS = i18n/anylink_zh_CN.ts
+TRANSLATIONS = i18n/plitun_zh_CN.ts
 
 win32|macx|linux:!android {
     include(3rdparty/SingleApplication/singleapplication.pri)
@@ -43,41 +43,41 @@ defineTest(copyIcon) {
     export(QMAKE_POST_LINK)
 }
 
-VERSION = 0.9.5
+VERSION = 1.1.0
 
 macx {
     # https://doc.qt.io/qt-6/qmake-variable-reference.html#qmake-info-plist The value of QMAKE_BUNDLE should not be set directly by the project.
-    QMAKE_TARGET_BUNDLE_PREFIX = pro.anylink
+    QMAKE_TARGET_BUNDLE_PREFIX = pro.plitun
 
     HEADERS += src/macdockiconhandler.h
     SOURCES += src/macdockiconhandler.mm
 
-    TARGET = Plinfo
+    TARGET = PliTun
     # QMAKE_APPLE_DEVICE_ARCHS = x86_64
-    ICON = resource/mac/plinfo.icns
+    ICON = resource/mac/plitun.icns
     QMAKE_INFO_PLIST = resource/mac/Info.plist
     DESTDIR = $$PWD/out/bin
 
-    copyIcon(resource/mac/plinfo.icns)
+    copyIcon(resource/mac/plitun.icns)
 }
 
 win32 {
     # https://doc.qt.io/qt-6/qmake-variable-reference.html#version
     #RC_FILE = resource.rc
-    RC_ICONS = resource\windows\plinfo.ico
-    QMAKE_TARGET_PRODUCT = "Plinfo Secure Client"
+    RC_ICONS = resource\windows\plitun.ico
+    QMAKE_TARGET_PRODUCT = "PliTun SSL VPN"
     QMAKE_TARGET_COMPANY = "https://plitun.com"
-    QMAKE_TARGET_DESCRIPTION = "Plinfo Secure Client"
-    QMAKE_TARGET_COPYRIGHT = "Copyright 2022-2023 https://plitun.com. All rights reserved."
+    QMAKE_TARGET_DESCRIPTION = "PliTun SSL VPN"
+    QMAKE_TARGET_COPYRIGHT = "Copyright 2022-2023 https://plitun.pro. All rights reserved."
 
     DESTDIR = $$PWD/out/bin
-    copyIcon(assets/plinfo.png resource/windows/plinfo.ico)
+    copyIcon(assets/plitun64.png resource/windows/plitun.ico)
 }
 
 linux:!android {
-    DESTDIR = $$PWD/out/opt/plinfo/bin
-    copyToDestDir(assets/plinfo.png resource/linux/anylink.desktop)
-    copyIcon(assets/plinfo.png)
+    DESTDIR = $$PWD/out/opt/plitun/bin
+    copyToDestDir(assets/plitun.png resource/linux/plitun.desktop)
+    copyIcon(assets/plitun64.png)
 }
 
 # You can make your code fail to compile if it uses deprecated APIs.

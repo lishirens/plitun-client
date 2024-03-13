@@ -15,11 +15,11 @@ function Component()
         uninstaller = installer.value("TargetDir") + "/" + uninstaller;
 
     } else if (systemInfo.kernelType === "winnt") {
-        installer.setValue("TargetDir", targetDir + "Plitun");
+        installer.setValue("TargetDir", targetDir + "PliTun");
 
         uninstaller = installer.value("TargetDir") + "/" + uninstaller + ".exe";
     } else if (systemInfo.kernelType === "darwin") {
-        installer.setValue("TargetDir", targetDir + "Plitun");
+        installer.setValue("TargetDir", targetDir + "PliTun");
 
         uninstaller = installer.value("TargetDir") + "/" + uninstaller + ".app/Contents/MacOS/uninstall";
     }
@@ -36,7 +36,7 @@ function Component()
     }
 
     if (systemInfo.kernelType === "darwin") {
-        component.addStopProcessForUpdateRequest("Plitun");
+        component.addStopProcessForUpdateRequest("PliTun");
     } else {
         // kill self when install and uninstall
         component.addStopProcessForUpdateRequest("plitun");
@@ -74,13 +74,13 @@ Component.prototype.createOperations = function()
         //开始菜单快捷方式
         component.addOperation("CreateShortcut",
                                "@TargetDir@/plitun.exe",
-                               "@StartMenuDir@/Plitun SSL VPN.lnk",
+                               "@StartMenuDir@/PliTun SSL VPN.lnk",
                                "workingDirectory=@TargetDir@");
 
         //桌面快捷方式
         component.addOperation("CreateShortcut",
                                "@TargetDir@/plitun.exe",
-                               "@DesktopDir@/Plitun SSL VPN.lnk",
+                               "@DesktopDir@/PliTun SSL VPN.lnk",
                                "workingDirectory=@TargetDir@");
 
 
@@ -88,12 +88,12 @@ Component.prototype.createOperations = function()
                                 "UNDOEXECUTE","@TargetDir@/vpnagent.exe","uninstall");
     } else if (systemInfo.kernelType === "darwin") {
         component.createOperations();
-        component.addOperation("CreateLink", "@ApplicationsDir@/Plitun.app", "@TargetDir@/Plitun.app");
+        component.addOperation("CreateLink", "@ApplicationsDir@/PliTun.app", "@TargetDir@/PliTun.app");
 
         if (installer.gainAdminRights()) {
             // install and start the service or stop and remove the service
-            component.addElevatedOperation("Execute", "@TargetDir@/Plitun.app/Contents/MacOS/vpnagent","install",
-                                    "UNDOEXECUTE","@TargetDir@/Plitun.app/Contents/MacOS/vpnagent","uninstall");
+            component.addElevatedOperation("Execute", "@TargetDir@/PliTun.app/Contents/MacOS/vpnagent","install",
+                                    "UNDOEXECUTE","@TargetDir@/PliTun.app/Contents/MacOS/vpnagent","uninstall");
             installer.dropAdminRights()
         }
     }
