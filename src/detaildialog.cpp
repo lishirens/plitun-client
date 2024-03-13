@@ -7,7 +7,7 @@
 
 DetailDialog::DetailDialog(AnyLink *parent) :
     QDialog(parent),
-    ui(new Ui::DetailDialog), anylink(parent)
+    ui(new Ui::DetailDialog), plitun(parent)
 {
     ui->setupUi(this);
     ui->tableExcluded->setColumnCount(2);
@@ -88,8 +88,8 @@ void DetailDialog::showEvent(QShowEvent *event)
     Q_UNUSED(event)
     // 每隔 1 秒获取流量统计
     connect(&timer, &QTimer::timeout, this, [this]() {
-        if(anylink->rpc->isConnected()) {
-            anylink->rpc->callAsync("stat", AnyLink::STAT, [this](const QJsonValue & result) {
+        if(plitun->rpc->isConnected()) {
+            plitun->rpc->callAsync("stat", AnyLink::STAT, [this](const QJsonValue & result) {
                 const QJsonObject &stat = result.toObject();
                 if(!stat.contains("code")) {
                     ui->labelBytesSent->setText(format(stat["bytesSent"].toDouble()));
