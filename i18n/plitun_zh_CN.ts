@@ -4,12 +4,12 @@
 <context>
     <name>PliTun</name>
     <message>
-        <location filename="../src/anylink.cpp" line="+29"/>
+        <location filename="../src/plitun.cpp" line="+29"/>
         <source>PliTun SSL VPN</source>
         <translation>PliTun 安全客户端</translation>
     </message>
     <message>
-        <location filename="../src/anylink.ui" line="+58"/>
+        <location filename="../src/plitun.ui" line="+58"/>
         <source>Gateway</source>
         <translation>网关</translation>
     </message>
@@ -35,7 +35,7 @@
     </message>
     <message>
         <location line="+65"/>
-        <location filename="../src/anylink.cpp" line="+210"/>
+        <location filename="../src/plitun.cpp" line="+210"/>
         <source>Connect</source>
         <translation>连接</translation>
     </message>
@@ -160,7 +160,7 @@
         <translation>&lt;a href=&quot;https://plitun.com&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;检查更新&lt;/span&gt;&lt;/a&gt;</translation>
     </message>
     <message>
-        <location filename="../src/anylink.cpp" line="+200"/>
+        <location filename="../src/plitun.cpp" line="+200"/>
         <source>Couldn&apos;t open log file</source>
         <translation>未能打开日志文件</translation>
     </message>

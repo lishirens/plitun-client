@@ -85,7 +85,7 @@ linux:!android {
 DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    src/anylink.cpp \
+    src/plitun.cpp \
     src/common.cpp \
     src/configmanager.cpp \
     src/detaildialog.cpp \
@@ -97,7 +97,7 @@ SOURCES += \
     src/textbrowser.cpp
 
 HEADERS += \
-    src/anylink.h \
+    src/plitun.h \
     src/common.h \
     src/configmanager.h \
     src/detaildialog.h \
@@ -108,7 +108,7 @@ HEADERS += \
     src/textbrowser.h
 
 FORMS += \
-    src/anylink.ui \
+    src/plitun.ui \
     src/detaildialog.ui \
     src/profilemanager.ui \
     src/textbrowser.ui

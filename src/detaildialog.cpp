@@ -1,6 +1,6 @@
 #include "detaildialog.h"
 #include "ui_detaildialog.h"
-#include "anylink.h"
+#include "plitun.h"
 #include "jsonrpcwebsocketclient.h"
 #include <QHostAddress>
 #include <QJsonObject>

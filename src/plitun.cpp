@@ -1,4 +1,4 @@
-#include "anylink.h"
+#include "plitun.h"
 #include <QCloseEvent>
 #include <QFile>
 #include <QJsonValue>
@@ -8,7 +8,7 @@
 #include "jsonrpcwebsocketclient.h"
 #include "profilemanager.h"
 #include "textbrowser.h"
-#include "ui_anylink.h"
+#include "ui_plitun.h"
 
 #if defined(Q_OS_MACOS)
 #include "macdockiconhandler.h"
