@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>AnyLink</class>
- <widget class="QWidget" name="AnyLink">
+ <class>PliTun</class>
+ <widget class="QWidget" name="PliTun">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -550,14 +550,14 @@
          <item>
           <widget class="QCheckBox" name="checkBoxAutoLogin">
            <property name="text">
-            <string>Connect to the last used VPN when AnyLink is started</string>
+            <string>Connect to the last used VPN when PliTun is started</string>
            </property>
           </widget>
          </item>
          <item>
           <widget class="QCheckBox" name="checkBoxMinimize">
            <property name="text">
-            <string>Minimize AnyLink on VPN connect</string>
+            <string>Minimize PliTun on VPN connect</string>
            </property>
           </widget>
          </item>

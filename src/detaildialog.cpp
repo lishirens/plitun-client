@@ -5,7 +5,7 @@
 #include <QHostAddress>
 #include <QJsonObject>
 
-DetailDialog::DetailDialog(AnyLink *parent) :
+DetailDialog::DetailDialog(PliTun *parent) :
     QDialog(parent),
     ui(new Ui::DetailDialog), plitun(parent)
 {
@@ -89,7 +89,7 @@ void DetailDialog::showEvent(QShowEvent *event)
     // 每隔 1 秒获取流量统计
     connect(&timer, &QTimer::timeout, this, [this]() {
         if(plitun->rpc->isConnected()) {
-            plitun->rpc->callAsync("stat", AnyLink::STAT, [this](const QJsonValue & result) {
+            plitun->rpc->callAsync("stat", PliTun::STAT, [this](const QJsonValue & result) {
                 const QJsonObject &stat = result.toObject();
                 if(!stat.contains("code")) {
                     ui->labelBytesSent->setText(format(stat["bytesSent"].toDouble()));

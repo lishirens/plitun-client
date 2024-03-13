@@ -50,11 +50,11 @@ int main(int argc, char *argv[])
 
 //    outdateCheck();
 
-    AnyLink w;
+    PliTun w;
     w.show();
 
     QApplication::setQuitOnLastWindowClosed(false);
-    QObject::connect(&app, &SingleApplication::instanceStarted, &w, &AnyLink::showNormal);
+    QObject::connect(&app, &SingleApplication::instanceStarted, &w, &PliTun::showNormal);
 
     return app.exec();
 }

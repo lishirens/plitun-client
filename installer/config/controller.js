@@ -34,7 +34,7 @@ Controller.prototype.onInstallationFinished = function ()
         } else if (systemInfo.kernelType === "winnt") {
             installer.executeDetached("@TargetDir@/plitun.exe");
         } else if (systemInfo.kernelType === "darwin") {
-            installer.executeDetached("@TargetDir@/AnyLink.app/Contents/MacOS/AnyLink");
+            installer.executeDetached("@TargetDir@/PliTun.app/Contents/MacOS/PliTun");
         }
 
        // if (installer.value("UILanguage") === "zh_CN") {
