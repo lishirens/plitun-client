@@ -4,7 +4,7 @@
 
 QString agentName = "PliTun SSL VPN";
 
-QString appVersion = "0.9.5";
+QString appVersion = "1.1.0";
 
 QString configLocation = "";
 QString tempLocation = "";
