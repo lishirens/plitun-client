@@ -2,7 +2,7 @@
 <Installer>
     <Name>DnsCat SSL VPN</Name>
     <Version>1.1.0</Version>
-    <Title>PliTun SSL VPN</Title>
+    <Title>DnsCat SSL VPN</Title>
     <Publisher>https://DnsCat.net</Publisher>
     <ProductUrl>https://DnsCat.net</ProductUrl>
     <InstallerWindowIcon>plitun64.png</InstallerWindowIcon>
