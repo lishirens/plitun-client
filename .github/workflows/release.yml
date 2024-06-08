@@ -6,7 +6,7 @@ on:
 jobs:
   setup:
     name: Setup
-    uses: tlslink/sslcon/.github/workflows/release-setup.yml@main
+    uses: tlslink/vpnagent/.github/workflows/release-setup.yml@main
   build:
     name: Build
     runs-on: ${{ matrix.os }}
@@ -20,63 +20,63 @@ jobs:
           arch: gcc_64
           qt-modules: 'qtwebsockets'
           # qt-tools: 'tools_ifw'
-          installer-name: anylink-linux-amd64.run
+          installer-name: plitun-linux-amd64.run
         - build: linux
           os: ubuntu-20.04
           qt: 6.4.3
           arch: gcc_64
           qt-modules: 'qtwebsockets'
           # qt-tools: 'tools_ifw'
-          installer-name: anylink-linux-amd64.run
+          installer-name: plitun-linux-amd64.run
         - build: windows
           os: windows-2019
           qt: 6.6.2
           arch: win64_msvc2019_64
           qt-modules: 'qtwebsockets'
           qt-tools: 'tools_qtcreator'
-          installer-name: anylink-windows10-amd64.exe
+          installer-name: plitun-windows10-amd64.exe
         - build: macos
           os: macos-12
           qt: 6.6.2
           arch: clang_64
           qt-modules: 'qtwebsockets'
           # qt-tools: 'tools_ifw'
-          installer-name: anylink-installer
+          installer-name: plitun-installer
         - build: macos-arm64
           os: macos-14
           qt: 6.6.2
           arch: clang_64
           qt-modules: 'qtwebsockets'
           # qt-tools: 'tools_ifw'
-          installer-name: anylink-installer
+          installer-name: plitun-installer
     steps:
     - if: startsWith(github.ref, 'refs/heads/')
       shell: bash
       run: |
         if [ "${{ matrix.build }}" = "linux-latest" ]; then
-          echo "ARCHIVE_NAME=anylink-linux_openssl3-amd64.tar.gz" >> $GITHUB_ENV
+          echo "ARCHIVE_NAME=plitun-linux_openssl3-amd64.tar.gz" >> $GITHUB_ENV
         elif [ "${{ matrix.build }}" = "linux" ]; then
-          echo "ARCHIVE_NAME=anylink-linux-amd64.tar.gz" >> $GITHUB_ENV
+          echo "ARCHIVE_NAME=plitun-linux-amd64.tar.gz" >> $GITHUB_ENV
         elif [ "${{ matrix.build }}" = "windows" ]; then
-          echo "ARCHIVE_NAME=anylink-windows10-amd64.zip" >> $GITHUB_ENV
+          echo "ARCHIVE_NAME=plitun-windows10-amd64.zip" >> $GITHUB_ENV
         elif [ "${{ matrix.build }}" = "macos" ]; then
-          echo "ARCHIVE_NAME=anylink-macOS-amd64.dmg" >> $GITHUB_ENV
+          echo "ARCHIVE_NAME=plitun-macOS-amd64.dmg" >> $GITHUB_ENV
         elif [ "${{ matrix.build }}" = "macos-arm64" ]; then
-          echo "ARCHIVE_NAME=anylink-macOS-arm64.dmg" >> $GITHUB_ENV
+          echo "ARCHIVE_NAME=plitun-macOS-arm64.dmg" >> $GITHUB_ENV
         fi
     - if: startsWith(github.ref, 'refs/tags/')
       shell: bash
       run: |
         if [ "${{ matrix.build }}" = "linux-latest" ]; then
-          echo "ARCHIVE_NAME=anylink-${{ github.ref_name }}-linux_openssl3-amd64.tar.gz" >> $GITHUB_ENV
+          echo "ARCHIVE_NAME=plitun-${{ github.ref_name }}-linux_openssl3-amd64.tar.gz" >> $GITHUB_ENV
         elif [ "${{ matrix.build }}" = "linux" ]; then
-          echo "ARCHIVE_NAME=anylink-${{ github.ref_name }}-linux-amd64.tar.gz" >> $GITHUB_ENV
+          echo "ARCHIVE_NAME=plitun-${{ github.ref_name }}-linux-amd64.tar.gz" >> $GITHUB_ENV
         elif [ "${{ matrix.build }}" = "windows" ]; then
-          echo "ARCHIVE_NAME=anylink-${{ github.ref_name }}-windows10-amd64.zip" >> $GITHUB_ENV
+          echo "ARCHIVE_NAME=plitun-${{ github.ref_name }}-windows10-amd64.zip" >> $GITHUB_ENV
         elif [ "${{ matrix.build }}" = "macos" ]; then
-          echo "ARCHIVE_NAME=anylink-${{ github.ref_name }}-macOS-amd64.dmg" >> $GITHUB_ENV
+          echo "ARCHIVE_NAME=plitun-${{ github.ref_name }}-macOS-amd64.dmg" >> $GITHUB_ENV
         elif [ "${{ matrix.build }}" = "macos-arm64" ]; then
-          echo "ARCHIVE_NAME=anylink-${{ github.ref_name }}-macOS-arm64.dmg" >> $GITHUB_ENV
+          echo "ARCHIVE_NAME=plitun-${{ github.ref_name }}-macOS-arm64.dmg" >> $GITHUB_ENV
         fi
     - name: Install dependencies
       shell: bash
@@ -109,7 +109,7 @@ jobs:
         cache: false
         cache-key-prefix: 'cache-qt'
         aqtversion: '==3.1.*'
-        extra: '--base https://mirrors.ocf.berkeley.edu/qt'  # https://download.qt.io/static/mirrorlist/
+        extra: '--base https://mirrors.ustc.edu.cn/qtproject'  # https://download.qt.io/static/mirrorlist/
     - uses: actions/checkout@v3
       with:
         submodules: recursive
@@ -148,12 +148,12 @@ jobs:
           # probonopd
           wget -c -nv "https://github.com/probonopd/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-x86_64.AppImage"
           chmod a+x linuxdeployqt-continuous-x86_64.AppImage
-          ./linuxdeployqt-continuous-x86_64.AppImage out/opt/anylink/bin/anylink -extra-plugins=platformthemes/libqgtk3.so -no-copy-copyright-files -no-translations -unsupported-allow-new-glibc
-          cp fcitx-qt5-master/qt6/platforminputcontext/libfcitxplatforminputcontextplugin-qt6.so out/opt/anylink/plugins/platforminputcontexts/
+          ./linuxdeployqt-continuous-x86_64.AppImage out/opt/plitun/bin/plitun -extra-plugins=platformthemes/libqgtk3.so -no-copy-copyright-files -no-translations -unsupported-allow-new-glibc
+          cp fcitx-qt5-master/qt6/platforminputcontext/libfcitxplatforminputcontextplugin-qt6.so out/opt/plitun/plugins/platforminputcontexts/
           wget -c -nv https://github.com/tlslink/sslcon/releases/download/continuous/sslcon-linux-amd64.tar.gz
           tar -zxvf sslcon-*.tar.gz
-          cp vpnagent sslcon out/opt/anylink/bin
-          7z a installer/packages/root/data/anylink.7z ./out/opt/anylink/*
+          cp vpnagent sslcon out/opt/plitun/bin
+          7z a installer/packages/root/data/plitun.7z ./out/opt/plitun/*
           cd installer
           wget -c -nv https://mirrors.ustc.edu.cn/qtproject/official_releases/qt-installer-framework/4.7.0/QtInstallerFramework-linux-x64-4.7.0.run
           chmod +x ./*.run
@@ -162,11 +162,11 @@ jobs:
           chmod +x ./*.run
           tar -zcvf "${{ github.workspace }}"/archive/${{ env.ARCHIVE_NAME }} ${{ matrix.installer-name }}
         elif [ "${{ matrix.build }}" = "windows" ]; then
-          windeployqt out/bin/anylink.exe --no-translations --no-system-d3d-compiler --no-opengl-sw --no-svg
+          windeployqt out/bin/plitun.exe --no-translations --no-system-d3d-compiler --no-opengl-sw --no-svg
           curl -k -L -O https://github.com/tlslink/sslcon/releases/download/continuous/sslcon-windows10-amd64.7z
           7z x -y sslcon-*.7z
           cp vpnagent.exe sslcon.exe out/bin
-          7z a installer/packages/root/data/anylink.7z ./out/bin/*
+          7z a installer/packages/root/data/plitun.7z ./out/bin/*
           cd installer
           curl -k -O -L https://mirrors.ustc.edu.cn/qtproject/archive/qt-installer-framework/4.5.2/QtInstallerFramework-windows-x64-4.5.2.exe
           ./QtInstallerFramework-windows-x64-4.5.2.exe --al --da -c -t `pwd`/ifw in
@@ -182,10 +182,10 @@ jobs:
           cd ../out/bin
           curl -k -L -O https://github.com/tlslink/sslcon/releases/download/continuous/sslcon-macOS-amd64.tar.gz
           tar -zxvf sslcon-*.tar.gz
-          cp vpnagent sslcon AnyLink.app/Contents/MacOS
-          macdeployqt AnyLink.app
+          cp vpnagent sslcon PliTun.app/Contents/MacOS
+          macdeployqt PliTun.app
           mkdir -p ../../installer/packages/root/data
-          ../../installer/ifw/bin/archivegen ../../installer/packages/root/data/anylink.7z ./AnyLink.app
+          ../../installer/ifw/bin/archivegen ../../installer/packages/root/data/plitun.7z ./PliTun.app
           cd ../../installer
           ./ifw/bin/binarycreator --offline-only -c config/config.xml -p packages ${{ matrix.installer-name }}
           hdiutil create -fs HFS+ -srcfolder ${{ matrix.installer-name }}.app -format UDZO "${{ github.workspace }}"/archive/${{ env.ARCHIVE_NAME }}
@@ -197,10 +197,10 @@ jobs:
           cd ../out/bin
           curl -k -L -O https://github.com/tlslink/sslcon/releases/download/continuous/sslcon-macOS-arm64.tar.gz
           tar -zxvf sslcon-*.tar.gz
-          cp vpnagent sslcon AnyLink.app/Contents/MacOS
-          macdeployqt AnyLink.app
+          cp vpnagent sslcon PliTun.app/Contents/MacOS
+          macdeployqt PliTun.app
           mkdir -p ../../installer/packages/root/data
-          ../../installer/ifw/bin/archivegen ../../installer/packages/root/data/anylink.7z ./AnyLink.app
+          ../../installer/ifw/bin/archivegen ../../installer/packages/root/data/plitun.7z ./PliTun.app
           cd ../../installer
           ./ifw/bin/binarycreator --offline-only -c config/config.xml -p packages ${{ matrix.installer-name }}
           hdiutil create -fs HFS+ -srcfolder ${{ matrix.installer-name }}.app -format UDZO "${{ github.workspace }}"/archive/${{ env.ARCHIVE_NAME }}
@@ -219,7 +219,7 @@ jobs:
       uses: softprops/action-gh-release@v1
       with:
         name: Release build (${{ github.ref_name }})
-        body: 'See [README](https://github.com/tlslink/anylink-client) for more details.'
+        body: 'See [README](https://github.com/Yansre/plitun-client) for more details.'
         files: archive/${{ env.ARCHIVE_NAME }}
         generate_release_notes: true
     - if: startsWith(github.ref, 'refs/tags/') && (matrix.build != 'windows')
